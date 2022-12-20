@@ -1,0 +1,123 @@
+<!-- ############################################################### footer -->
+<div class="spacer"></div>
+<footer class="sticky-footer boxed">
+
+    <!-- <div class="container">
+        <div class="row">
+            <div class="col-sm-12">
+                <h6 class="foo">Dark footer</h6>
+            </div>
+        </div>
+    </div> -->
+
+    <!-- Footer Dark -->
+    <div class="footer footer-dark">
+        <div class="divider-full"></div>
+
+        <!-- container-->
+        <div class="container">
+
+            <div class="divider-top"></div>
+
+            <!-- row 1-->
+            <div class="row no-padding">
+
+                <div class="col-xs-12 col-sm-4 centered ">
+                    <div class="widget-container  widget_nav_menu ">
+                        <h3 class="widget-title "><span>DIRECCION</span></h3>
+                        <ul class="contact-address ">
+                            <li class="address first "><span>Parque Tecnológico</span></li>
+                            <!-- <li class="phone "><span>C./ de Marie Curie, 8B, oficina 4</span></li> -->
+                            <!-- <li class="fax last "><span>29590</span></li> -->
+                            <li class="city "><span>Málaga, España</span></li>
+                            <li class=""><span>Tlf: (+034) 609 55 35 29</span></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="col-xs-12 col-sm-4 centered ">
+                    <div class="widget-container widget_nav_menu ">
+                        <h3 class="widget-title "><span>LEGAL</span></h3>
+                        <ul>
+                            <li class="first "><a [routerLink]="['/legal']" hidefocus="true " style="outline: none; "><span>Política de privacidad</span></a></li>
+                            <li class="last "><a [routerLink]="['/legal']" hidefocus="true " style="outline: none; "><span>Garantías de productos</span></a></li>
+                            <li class="last "><a [routerLink]="['/legal']" hidefocus="true " style="outline: none; "><span>¿Porqué no usamos 'Cookies'? </span></a></li>
+                            <li><a [routerLink]="['/legal']" hidefocus="true " style="outline: none; "><span>Copy Right</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- <div class="col-xs-12 col-sm-4 centered">
+                    <div class="widget-container widget_nav_menu">
+                        <h3 class="widget-title"><span>¿Dónde estamos?</span></h3>
+
+                        <div id="googleMap"></div>
+                    </div>
+                </div> -->
+
+                <div class="col-xs-12 col-sm-4 centered">
+                    <div class="widget-container widget_nav_menu">
+                        <h3 class="widget-title"><span>SITE MAP</span></h3>
+                        <ul>
+                            <li class="first"><a [routerLink]="['/inicio']" hidefocus="true" style="outline: none;"><span>Inicio</span></a></li>
+                            <li class="first"><a [routerLink]="['/products']" hidefocus="true" style="outline: none;"><span>Productos</span></a></li>
+                            <li><a [routerLink]="['/services']" hidefocus="true" style="outline: none;"><span>Servicios</span></a></li>
+                            <li class="last"><a [routerLink]="['/contact', 'no-reason']" hidefocus="true" style="outline: none;"><span>Contacto</span></a></li>
+                            <!-- <li><a href="#" hidefocus="true" style="outline: none;"><span>¿Quienes somos?</span></a></li> -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <!-- row 1-->
+            <div class="divider-bottom "></div>
+            <!-- row 2-->
+            <div class="row centered">
+
+                <div class="col-xs-12 col-lg-12">
+                    <div class="widget-container widget_nav_menu">
+                        <ul class="ul-block">
+                            <li><a (click)="HrefTo('twitter')" hidefocus="true" style="outline: none;"><span class="social fa fa-twitter"></span></a></li>
+                            <li><a (click)="HrefTo('instagram')" hidefocus="true" style="outline: none;"><span class="social fa fa-instagram"></span></a></li>
+                            <li><a (click)="HrefTo('facebook')" hidefocus="true" style="outline: none;"><span class="social fa fa-facebook"></span></a></li>
+                            <!-- <li><a (click)="HrefTo('linkedin')" hidefocus="true" style="outline: none;"><span class="social fa fa-linkedin"></span></a></li> -->
+                            <li><a (click)="HrefTo('youtube')" hidefocus="true" style="outline: none;"><span class="social fa fa-youtube"></span></a></li>
+                            <li><a (click)="HrefTo('tumblr')" hidefocus="true" style="outline: none;"><span class="social fa fa-tumblr"></span></a></li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+            <!-- row -->
+
+            <div class="divider-bottom "></div>
+            <!-- row -->
+            <div class="row no-padding">
+                <div class="col-xs-12  col-sm-6 col-md-4 col-lg-4 centered">
+                    <div class="write_email footer_bottom "><a [routerLink]="['/contact', 'no-reason']" hidefocus="true " style="outline: none; "><i class="ico-footer-support ico-footer-support1 "></i>
+                  <span>contact@AVR3DStudio.com</span></a></div>
+                </div>
+                <div class="col-xs-12  col-sm-6  col-md-4 col-lg-4 centered">
+                    <div class="live_chat footer_bottom "><a href="# " hidefocus="true " style="outline: none; "><i class="ico-footer-support ico-footer-support2 "></i>
+                  <span>Pronto Chat en vivo 24/7/365</span></a></div>
+                </div>
+                <div class="col-xs-12  col-sm-6 col-md-4 col-lg-4 centered">
+                    <div class="live_support footer_bottom "><a href="# " hidefocus="true " style="outline: none; "><i class="ico-footer-support ico-footer-support3 "></i>
+                  <span>Soporte telefónico: +34 609 55 35 29</span></a></div>
+                </div>
+
+            </div>
+            <!-- row -->
+            <div class="row no-padding">
+                <br>
+                <div class="col-xs-12 ">
+                    <div class="copyright footer_bottom centered"><span class="">© Copyright 2018 | Hosting Co. All rights reserved</span></div>
+                </div>
+            </div>
+
+        </div>
+        <!--/ container-->
+    </div>
+    <!--/ Footer Dark -->
+
+</footer>
+<!-- ############################################################### footer -->

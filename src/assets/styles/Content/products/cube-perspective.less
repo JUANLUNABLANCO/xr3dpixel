@@ -1,0 +1,302 @@
+
+
+
+/* ###################3 fx cubetext 3d*/
+
+
+
+.perspective {
+  -webkit-perspective: 76em;
+          perspective: 76em;
+  -webkit-perspective-origin: 50% 50px;
+          perspective-origin: 50% 50px;
+  width: 100%;
+  margin: 0 auto;
+  font-family: 'Roboto', sans-serif;
+  font-weight: 100;
+  color: #fff !important;
+  text-align: center;
+  // border: 1px solid red;
+}
+
+.perpective input {
+  display: none !important;
+}
+.perspective-tabs{
+  display: none;
+}
+
+.perspective .tab {
+  position: absolute;
+  width: 80px;
+  height: 70px;
+  background: pink;
+  right: 0;
+  line-height: 70px;
+  font-weight: 300;
+}
+@color1:#1B9AAA;
+@color2:#06D6A0;
+@color3:#EF476F;
+@color4:#313848;
+.perspective .tab:nth-child(1) {
+  top: -5px;
+  background: @color2;
+}
+.perspective .tab:nth-child(2) {
+  top: 69px;
+  background: @color3;
+}
+.perspective .tab:nth-child(3) {
+  top: 143px;
+  background: @color4;
+}
+.perspective .tab:nth-child(4) {
+  top: 217px;
+  background: @color1;
+}
+
+
+.perspective .cube1, .perspective  .cube2, .perspective  .cube3 {
+  position: relative;
+  top: 0%;
+  left: -60px;
+  margin: 0 auto 0;
+  width: 500px;
+  height: 300px;
+  -webkit-transform-origin: 0 100px;
+          transform-origin: 0 100px;
+  -webkit-transform-style: preserve-3d;
+          transform-style: preserve-3d;
+  transition: -webkit-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in;
+  transition: transform 0.5s ease-in, -webkit-transform 0.5s ease-in;
+}
+
+.perspective .tab-content {
+  width: 500px;
+  height: 300px;
+  position: absolute;
+}
+.perspective .tab-content h1 {
+  font-size: 25px;
+  margin: 10px 0 10px;
+  font-weight: 300;
+}
+.perspective .tab-content p {
+  font-size: 16px;
+  color: #313848 !important;
+  text-align: justify;
+}
+
+
+
+
+.perspective .tab-content:nth-child(1) {
+  -webkit-transform: rotateX(-270deg) translateY(-150px);
+          transform: rotateX(-270deg) translateY(-150px);
+  -webkit-transform-origin: top left;
+          transform-origin: top left;
+  background: @color1;
+}
+.perspective .tab-content:nth-child(2) {
+  -webkit-transform: translateZ(150px);
+          transform: translateZ(150px);
+  background: @color2;
+}
+.perspective .tab-content:nth-child(3) {
+  -webkit-transform: rotateX(-90deg) translateY(150px);
+          transform: rotateX(-90deg) translateY(150px);
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
+  background: @color3;
+}
+
+.perspective .tab-content:nth-child(4) {
+  -webkit-transform: rotateX(-180deg) translateY(300px) translateZ(150px);
+          transform: rotateX(-180deg) translateY(300px) translateZ(150px);
+  -webkit-transform-origin: bottom center;
+          transform-origin: bottom center;
+  background: @color4;
+}
+.perspective .tab-content:nth-child(4) p{
+  color: antiquewhite !important;
+}
+
+
+// ######################## funcionalidad
+
+.perspective #tab-top-c1:checked ~ .cube1 {
+  -webkit-transform: rotateX(-90deg);
+          transform: rotateX(-90deg);
+}
+
+.perspective #tab-front-c1:checked ~ .cube1 {
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+}
+
+.perspective #tab-bottom-c1:checked ~ .cube1 {
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+}
+
+.perspective #tab-back-c1:checked ~ .cube1 {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+
+.perspective #tab-top-c2:checked ~ .cube2 {
+  -webkit-transform: rotateX(-90deg);
+          transform: rotateX(-90deg);
+}
+
+.perspective #tab-front-c2:checked ~ .cube2 {
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+}
+
+.perspective #tab-bottom-c2:checked ~ .cube2 {
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+}
+
+.perspective #tab-back-c2:checked ~ .cube2 {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+.perspective #tab-top-c3:checked ~ .cube3 {
+  -webkit-transform: rotateX(-90deg);
+          transform: rotateX(-90deg);
+}
+
+.perspective #tab-front-c3:checked ~ .cube3 {
+  -webkit-transform: rotateX(0deg);
+          transform: rotateX(0deg);
+}
+
+.perspective #tab-bottom-c3:checked ~ .cube3 {
+  -webkit-transform: rotateX(90deg);
+          transform: rotateX(90deg);
+}
+
+.perspective #tab-back-c3:checked ~ .cube3 {
+  -webkit-transform: rotateX(180deg);
+          transform: rotateX(180deg);
+}
+
+// ######################## funcionalidad
+
+.perspective *{
+  color: #fff !important;
+}
+
+.perspective img.cube3d {
+  max-width: 300px;
+  position: absolute;
+  top: 50%;
+
+  // border:1px solid;
+
+}
+.perspective img.cube3d.c3d01{
+  width: 275px;
+}
+.perspective img.cube3d.c3d02{
+  width: 200px;
+  left: 25%;
+}
+.perspective img.cube3d.c3d03{
+  width: 200px;
+  top:60%;
+  left:0%;
+}
+.perspective img.cube3d.c3d04{
+  width: 260px;
+}
+.perspective img.cube3d.c3d05{
+  width: 200px;
+  top:60%;
+  left:40%;
+}
+.perspective img.cube3d.c3d06{
+  width: 200px;
+  top:60%;
+  left:60%;
+}
+.btn-cube {
+  position: relative;
+  top: 70%;
+}
+
+
+// @media(max-width:800px) and (min-width: 450px){
+//   .perspective .cube1, .perspective .cube2, .perspective .cube3{
+//     min-width: 400px;
+//   }
+//   .perspective .tab{
+//     left: 80%;
+//   }
+//   .perspective .tab-content{
+//     width: 300px;
+//     padding:16px;
+//   }
+//   .perspective .tab-content h1 {
+//     font-size: 1.4rem;
+
+//   }
+//   .perspective .tab-content p{
+//     font-size: 1rem;
+//   }
+//   .perspective .tab-content img.cube3d{
+//     width: 150px;
+//     top: 70%;
+//     left:50%;
+//   }
+// }
+@media(max-width:1024px){
+  .perspective .cube1, .perspective .cube2, .perspective .cube3{
+   width: 400px;
+  }
+  .perspective .tab{
+    right: 1%;
+    width: 40px;
+  }
+  .perspective div.tab-content{
+    max-width: 400px !important;
+    padding: 0 !important;
+  }
+  .perspective .tab-content h1 {
+    font-size: 1rem;
+
+  }
+  .perspective .tab-content p{
+    font-size: .8rem;
+    position: absolute;
+    top:40px;
+    right: 10px;
+    width: 360px;
+    margin:0;
+
+
+  }
+  .perspective .tab-content img.cube3d{
+    width: 150px;
+    top: 60%;
+    right: 0%;
+    // border: 1px solid red;
+  }
+  .perspective .btn-cube{
+    position: relative;
+    top: 70%;
+    // a {
+    //   float: left;
+    //   margin-left: 20px;
+    // }
+  }
+}
+// @media(max-width:600px){
+
+// }

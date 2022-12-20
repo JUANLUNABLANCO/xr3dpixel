@@ -1,0 +1,39 @@
+<!-- ###################### Main/Pano2vr ####################### -->
+<!-- imports de js para pano2vr -->
+<!-- - - - - - - 8<- - - - - - cut here - - - - - 8<- - - - - - - -->
+<script type="text/javascript" src="pano2vr_player.js">
+</script>
+<script type="text/javascript" src="skin.js">
+</script>
+<script type="text/javascript">
+    // create the panorama player with the container
+    pano = new pano2vrPlayer("container");
+    // add the skin object
+    skin = new pano2vrSkin(pano);
+    // load the configuration
+    window.addEventListener("load", function() {
+        pano.readConfigUrlAsync("/assets/xml/pano.xml");
+    });
+</script>
+<noscript>
+  <p><b>Please enable Javascript!</b></p>
+</noscript>
+<!-- - - - - - - 8<- - - - - - cut here - - - - - 8<- - - - - - - -->
+<!-- Hack needed to hide the url bar on iOS 9, iPhone 5s -->
+<!--<div style="width:1px;height:1px;"></div>-->
+<!-- imports de js para pano2vr -->
+
+
+<div id="container" class="vr-pano-container">
+    <br>Loading...<br><br> This content requires HTML5 with CSS3 3D Transforms or WebGL.
+</div>
+<!-- audio-pano  -->
+<!-- <media>
+  <audio src="../assets/_pano2vr/media/MÚSICA AMBIENTAL AÑOS 60.mp3" preload="auto" no-controls autoplay>
+  <p>Tu navegador no implementa el elemento audio</p>
+</audio>
+</media> -->
+<!-- audio-pano -->
+<!-- Hack needed to hide the url bar on iOS 9, iPhone 5s -->
+<!--<div style="width:1px;height:1px;"></div>-->
+<!-- ###################### Main/Pano2vr ####################### -->

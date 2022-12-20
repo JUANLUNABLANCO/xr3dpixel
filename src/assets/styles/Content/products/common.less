@@ -1,0 +1,39 @@
+/* ###### common ###### */
+.avr-degradated {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  height: 80vh;
+  overflow: hidden;
+  margin-bottom: 40px;
+}
+.avr-degradated.avr-deg-ases{
+  background-color: #FF3CAC;
+  background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
+}
+.avr-degradated.avr-deg-solu{
+  background-color: #FF3CAC;
+  background-image: linear-gradient(225deg, #FF3CAC 0%, @green 50%,  @green 100%);
+}
+.avr-degradated.avr-deg-even{
+  background-color: #FF3CAC;
+  background-image: linear-gradient(225deg, #FF3CAC 0%, @secondary 50%, @secondary 100%);
+}
+
+.service_img.img_grey img{
+  width: 50px;
+}
+
+@media(max-width:800px) and (min-width: 450px){
+  .avr-degradated {
+    padding: 10px;
+    margin-bottom: 20px;
+  }
+}
+@media(max-width:449px){
+  .avr-degradated {
+    padding: 2px;
+    margin-bottom: 10px;
+  }
+}

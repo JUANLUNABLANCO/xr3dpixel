@@ -1,0 +1,505 @@
+.card-container{
+  margin: 0;
+  padding: 0;
+  outline: none;
+  width: 100%;
+  // height: 700px;
+  margin: 0 auto;
+  // border: 1px solid red;
+}
+
+.avr-card {
+  border-radius: 25px;
+  box-shadow: -11px 11px 1px rgba(0, 0, 0, 0.3);
+  // height: 55%;
+
+  // width: 100%;
+}
+
+.card-head {
+  position: relative;
+  height: 250px;
+  background: #fa782e;
+  /* Old browsers */
+  background: -moz-linear-gradient(-45deg, #fa782e 8%, #c82930 83%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(-45deg, #fa782e 8%, #c82930 83%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(135deg, #fa782e 8%, #c82930 83%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  // filter: progid: DXImageTransform.Microsoft.gradient( startColorstr='#fa782e', endColorstr='#c82930', GradientType=1);
+  /* IE6-9 fallback on horizontal gradient */
+  border-radius: 25px 25px 0 0;
+}
+
+.card-logo {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 55px;
+  margin: 20px;
+}
+// assets/images/content/products/prd_2.png
+.product-img-number {
+  position: absolute;
+  top: 30%;
+  left: 20%;
+
+  max-width: 175px;
+  // margin-top: -16px;
+  z-index: 2100;
+  // border: 1px solid yellow;
+}
+
+.product-img {
+  position: absolute;
+  top: 140px;
+  left: 10px;
+  max-width: 300px;
+  margin-top: -16px;
+  // margin-left: 0px;
+  z-index: 2000;
+  // border: 1px solid white;
+}
+
+
+.product-detail {
+  padding: 0 20px;
+  font-size: 11px;
+  color: #fff;
+  text-align: left;
+}
+
+.product-detail h2 {
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 2px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.back-text {
+  display: inline-block;
+  font-size: 125px;
+  font-weight: 900;
+  margin-left: -7px;
+  margin-top: 10px;
+  opacity: 0.1;
+  color: #000;
+}
+
+.card-body {
+  height: 100%;
+  background: #fff;
+  border-radius: 0 0 25px 25px;
+}
+
+.product-title {
+  padding: 20px 20px 5px 20px;
+  display: block;
+  font-size: 17px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.product-title b {
+  font-weight: 900;
+  letter-spacing: 0px;
+}
+
+.avr-badge {
+  position: absolute;
+  top: 290px;
+  font-size: 10px;
+  font-weight: 300;
+  color: #fff;
+  background: #11e95b;
+  padding: 2px 5px;
+  border-radius: 4px;
+  margin-left: 5px;
+}
+
+.product-caption {
+  display: block;
+  padding: 0 20px;
+  font-size: 14px;
+  font-weight: 400;
+  text-transform: uppercase;
+  color: #363636;
+}
+
+.product-rating {
+  padding: 0 20px;
+  font-size: 11px;
+}
+
+.product-rating i.grey {
+  color: #acacab;
+}
+
+.product-size h4 {
+  font-size: 11px;
+  padding: 0 21px;
+  margin-top: 15px;
+  padding-bottom: 10px;
+  text-transform: uppercase;
+}
+
+.ul-size {
+  margin-left: 15px;
+}
+
+.ul-size li {
+  list-style: none;
+  float: left;
+  margin-right: 20px;
+}
+
+.ul-size li a {
+  display: inline-block;
+  text-decoration: none;
+  font-size: 11px;
+  width: 22px;
+  height: 22px;
+  border-radius: 100%;
+  text-align: center;
+  line-height: 23px;
+  color: #000;
+}
+
+.ul-size li a.active {
+  background: #f35e3d;
+  color: #fff;
+}
+
+.product-size:before,
+.product-size:after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.explaining-details {
+  text-align: center;
+  color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+}
+
+.product-color h4 {
+  font-size: 11px;
+  padding: 0 21px;
+  margin-top: 20px;
+  padding-bottom: 20px;
+  text-transform: uppercase;
+}
+
+.ul-color {
+  margin-left: 27px;
+  position:  absolute;
+  top: 97%;
+}
+
+.ul-color li {
+  list-style: none;
+  float: left;
+  margin-right: 20px;
+}
+
+.ul-color li a {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  border-radius: 100%;
+}
+
+.ul-color li a.orange {
+  background: #FF9637;
+}
+
+.ul-color li a.green {
+  background: #11e95b;
+}
+
+.ul-color li a.yellow {
+  background: #ffd414;
+}
+.ul-color li a.blue {
+  background: #007DF3;
+}
+.ul-color li a.violet {
+  background: darkmagenta;
+}
+
+.ul-color li a.active:after {
+  // position: absolute;
+  // top: 70%;
+  content: '';
+  display: inline-block;
+  border: 1px solid #000; //#fff; // #f35e3d;
+  width: 24px;
+  height: 24px;
+  border-radius: 100%;
+  margin-left: -5px;
+  margin-top: -5px;
+}
+
+.product-price {
+  position: absolute;
+  right: 20px;
+  top: 97%;
+  // bottom: -20px;
+  background: #11e95b;
+  padding: 7px 20px;
+  text-align: center;
+  display: inline-block;
+  font-size: 24px;
+  font-weight: 200;
+  color: #fff;
+  border-radius: 7px;
+  margin-top: -13px;
+  margin-left: -5px;
+  box-shadow: -10px 20px 15px -10px rgba(17, 233, 91, 0.3);
+  cursor: pointer;
+}
+
+.product-price b {
+  margin-left: 5px;
+}
+
+
+
+.yt
+{
+  position: fixed;
+  padding:7px 10px 3px 10px;
+  top: 5px;
+  right: 5px;
+  background: rgba(0,0,0,0.1);
+}
+
+.yt:hover
+{
+  background: rgba(0,0,0,0.2);
+}
+
+/* media queries*/
+@media( max-width: 767px){
+  .product-price {
+    position: absolute;
+    right: 0px;
+    top: 97%;
+
+    cursor: pointer;
+  }
+
+  .product-price b {
+    margin-left: 5px;
+  }
+
+  .ul-color {
+    margin-left: 27px;
+    position:  absolute;
+    top: 90%;
+  }
+
+  .ul-color li a.active:after {
+    position: absolute;
+    bottom: 0px;
+    border-color: black;
+    margin-left: -10px;
+  }
+}
+
+@media( min-width: 768px) and (max-width: 959px){
+  .product-img {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    width: 250px;
+  }
+}
+
+@media (min-width: 960px) and (max-width: 1200px){
+  .product-img {
+    position: absolute;
+    top: 75px;
+    left: 10px;
+    width: 200px;
+  }
+}
+
+
+
+//* animacion de flotar arriba y abajo*//
+.anim_blur{
+
+      animation-name: blur-image;
+      animation-duration: 5s;
+      animation-timing-function: ease-in-out;
+      animation-delay: initial;
+      animation-iteration-count: infinite;
+      animation-direction: initial;
+      animation-fill-mode: initial;
+      animation-play-state: initial;
+
+}
+
+@keyframes floatproduct{
+  0% {transform: translateY(0px);}
+  50% {transform: translateY(-20px);}
+  100% {transform: translateY(0px);}
+  }
+@keyframes blur-image {
+	0% {filter: blur(0px);}
+  50% {filter: blur(3px);}
+  100% {filter: blur(0px);}
+}
+@keyframes color-change{
+  0%{color: #fff;}
+  50%{color: #363636;}
+  100%{color: #fff;}
+}
+
+
+
+  .card-h6{
+    font-size: 1rem !important;
+    text-align: center;
+  }
+
+  .loading-text span {
+    display: inline-block;
+    margin: 0 2px;
+    color: #fff;
+    font-family: 'Roboto', sans-serif;
+  }
+  .loading-text span:nth-child(1) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 0s infinite linear alternate;
+            animation: blur-image 1.6s 0s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 0s infinite linear alternate;
+            animation: color-change 1.6s 0s infinite linear alternate;
+  }
+  .loading-text span:nth-child(2) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 0.1s infinite linear alternate;
+            animation: blur-image 1.6s 0.1s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 0.1s infinite linear alternate;
+            animation: color-change 1.6s 0.1s infinite linear alternate;
+  }
+  .loading-text span:nth-child(3) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 0.2s infinite linear alternate;
+            animation: blur-image 1.6s 0.2s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 0.2s infinite linear alternate;
+            animation: color-change 1.6s 0.2s infinite linear alternate;
+  }
+  .loading-text span:nth-child(4) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 0.3s infinite linear alternate;
+            animation: blur-image 1.6s 0.3s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 0.3s infinite linear alternate;
+            animation: color-change 1.6s 0.3s infinite linear alternate;
+  }
+  .loading-text span:nth-child(5) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 0.4s infinite linear alternate;
+            animation: blur-image 1.6s 0.4s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 0.4s infinite linear alternate;
+            animation: color-change 1.6s 0.4s infinite linear alternate;
+  }
+  .loading-text span:nth-child(6) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 0.5s infinite linear alternate;
+            animation: blur-image 1.6s 0.5s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 0.5s infinite linear alternate;
+            animation: color-change 1.6s 0.5s infinite linear alternate;
+  }
+  .loading-text span:nth-child(7) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 0.6s infinite linear alternate;
+            animation: blur-image 1.6s 0.6s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 0.6s infinite linear alternate;
+            animation: color-change 1.6s 0.6s infinite linear alternate;
+  }
+  .loading-text span:nth-child(8) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 0.7s infinite linear alternate;
+            animation: blur-image 1.6s 0.7s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 0.7s infinite linear alternate;
+            animation: color-change 1.6s 0.7s infinite linear alternate;
+  }
+  .loading-text span:nth-child(9) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 0.8s infinite linear alternate;
+            animation: blur-image 1.6s 0.8s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 0.8s infinite linear alternate;
+            animation: color-change 1.6s 0.8s infinite linear alternate;
+  }
+  .loading-text span:nth-child(10) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 0.9s infinite linear alternate;
+            animation: blur-image 1.6s 0.9s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 0.9s infinite linear alternate;
+            animation: color-change 1.6s 0.9s infinite linear alternate;
+  }
+  .loading-text span:nth-child(11) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 1s infinite linear alternate;
+            animation: blur-image 1.6s 1s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 1s infinite linear alternate;
+            animation: color-change 1.6s 1s infinite linear alternate;
+  }
+  .loading-text span:nth-child(12) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 1.1s infinite linear alternate;
+            animation: blur-image 1.6s 1.1s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 1.1s infinite linear alternate;
+            animation: color-change 1.6s 1.1s infinite linear alternate;
+  }
+  .loading-text span:nth-child(13) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 1.2s infinite linear alternate;
+            animation: blur-image 1.6s 1.2s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 1.2s infinite linear alternate;
+            animation: color-change 1.6s 1.2s infinite linear alternate;
+  }
+  .loading-text span:nth-child(14) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 1.3s infinite linear alternate;
+            animation: blur-image 1.6s 1.3s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 1.3s infinite linear alternate;
+            animation: color-change 1.6s 1.3s infinite linear alternate;
+  }
+  .loading-text span:nth-child(15) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 1.4s infinite linear alternate;
+            animation: blur-image 1.6s 1.4s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 1.4s infinite linear alternate;
+            animation: color-change 1.6s 1.4s infinite linear alternate;
+  }
+  .loading-text span:nth-child(16) {
+    -webkit-filter: blur(0px);
+            filter: blur(0px);
+    -webkit-animation: blur-image 1.6s 1.5s infinite linear alternate;
+            animation: blur-image 1.6s 1.5s infinite linear alternate;
+    -webkit-animation: color-change 1.6s 1.5s infinite linear alternate;
+            animation: color-change 1.6s 1.5s infinite linear alternate;
+  }
+

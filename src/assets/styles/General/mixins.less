@@ -1,0 +1,53 @@
+
+.border-radius(@radius: 10px) {
+	-webkit-border-radius:	@radius;
+  -moz-border-radius:	@radius;
+  -o-border-radius: @radius;
+  -ms-border-radius: @radius;
+	border-radius:		@radius;
+}
+
+.border-radius-params(@radius1: 0, @radius2: 4px, @radius3: 4px, @radius4: 4px ) {
+	-webkit-border-radius:	@radius1 @radius2 @radius3 @radius4;
+  -moz-border-radius:	@radius1 @radius2 @radius3 @radius4;
+  -o-border-radius: @radius1 @radius2 @radius3 @radius4;
+  -ms-border-radius: @radius1 @radius2 @radius3 @radius4;
+	border-radius:		@radius1 @radius2 @radius3 @radius4;
+}
+.transformX(@rX){
+  -webkit-transform: rotateX(@rX);
+  -moz-transform: rotateX(@rX);
+  -o-transform: rotateX(@rX);
+  -ms-transform: rotateX(@rX);
+  transform: rotateX(@rX);
+}
+
+.transformXY(@rX, @tY){
+  -webkit-transform: rotateX(@rX) translateY(@tY);
+  -moz-transform: rotateX(@rX) translateY(@tY);
+  -o-transform: rotateX(@rX) translateY(@tY);
+  -ms-transform: rotateX(@rX) translateY(@tY);
+  transform: rotateX(@rX) translateY(@tY);
+}
+
+.transform-origin(@X: left,  @Y: bottom){
+  -webkit-transform-origin: @X @Y;
+  -moz-transform-origin: @X @Y;
+  -o-transform-origin: @X @Y;
+  -ms-transform-origin: @X @Y;
+  transform-origin: @X @Y;
+}
+
+.background-size(@x, @y){
+  -webkit-background-size: @x @y;
+  -moz-background-size: @x @y;
+  -o-background-size: @x @y;
+  -ms-background-size: @x @y;
+  background-size: @x @y;
+}
+
+.shadows-boxed{
+  box-shadow: 5px 5px 22px -2px rgba(0, 0, 0, 0.5);
+  -webkit-box-shadow: 5px 5px 22px -2px rgba(0, 0, 0, 0.5);
+  -moz-box-shadow: 5px 5px 22px -2px rgba(0, 0, 0, 0.5);
+}

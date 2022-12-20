@@ -1,0 +1,89 @@
+<!-- ########################################################################################### Head/header.less ################## -->
+<!-- ###############################################################  jumbotrom-->
+<!-- <div class="upper-header"> -->
+    <!-- <img class="OBJ_3d" src="assets/images/content/OBJ_3d/minicooper.png" alt="objetos 3d renderizados: un mini-cooper"> -->
+    <!-- <img class="OBJ_3d" src="assets/images/content/OBJ_3d/camera.png" alt="objetos 3d renderizados: una camara relex">
+    <img class="OBJ_3d" src="assets/images/content/OBJ_3d/drone.png" alt="objetos 3d renderizados: un drone">
+    <img class="OBJ_3d" src="assets/images/content/OBJ_3d/vrcamera.png" alt="objetos 3d renderizados: una camara de Realidad Virtual">
+    <img class="OBJ_3d" src="assets/images/content/OBJ_3d/minicooper.png" alt="objetos 3d renderizados: un mini-cooper">
+    <img class="OBJ_3d" src="assets/images/content/OBJ_3d/camera.png" alt="objetos 3d renderizados: una camara relex">
+    <img class="OBJ_3d" src="assets/images/content/OBJ_3d/drone.png" alt="objetos 3d renderizados: un drone">
+    <img class="OBJ_3d" src="assets/images/content/OBJ_3d/vrcamera.png" alt="objetos 3d renderizados: una camara de Realidad Virtual"> -->
+<!-- </div> -->
+<!-- ###############################################################  row  | menu2 :icons2-->
+<div class="row sticky-over">
+  <!-- ##################### Main/menu2.less ################ -->
+  <!-- Horizontal Filter -->
+  <div class="myboxed  blog_filter icons2 clearfix">
+      <!-- boxed o myboxed da el estilo a la caja, blog_filter y icons el tipo de iconos, clearfix añade un clear-->
+
+      <!-- ##### button menu collapse -->
+      <a class="nav-link dropdown-toggle oculto" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">
+          <button type="button" class="navbar-toggle floatleft" data-toggle="collapse" data-target="#menucollapse">
+              <h2 class="float-left"><mat-icon>menu</mat-icon>
+                <!-- <span class="lead logo deepshadow">AVR 3D Studio</span> -->
+              </h2>
+          </button>
+          <div class="hidden-sm hidden-md hidden-lg logo-wrapper ">
+              <img class="logo_avr3ds_petit float-right" alt="logo de la empresa" src="assets/images/corporativo/logo/logo_XR_80x80.png">
+              <!-- We make Virtual Worlds from real sites -->
+              <!-- <h4 class="lead logo insetshadow">"Creamos Mundos Virtuales desde el Mundo Real."</h4> -->
+              <!-- Todo lo que ustedes puedan imaginar, nosotros podemos hacerlo realidad -->
+          </div>
+      </a>
+      <!-- ##### button menu collapse -->
+      <!-- ##### Menu-bar collpase -->
+      <div class="collapse navbar-collapse" id="menucollapse">
+          <ul class="filter_menu">
+              <!-- <li class="current-menu-item"> -->
+              <li routerLinkActive="current-menu-item"><a [routerLink]="['/inicio']"><i class="ico-cat ico-cat-fire"></i>Inicio </a></li>
+              <li routerLinkActive="current-menu-item"><a [routerLink]="['/services']"><i class="ico-cat ico-cat-comments"></i>Servicios</a></li>
+              <li routerLinkActive="current-menu-item"><a [routerLink]="['/products']"><mat-icon class="avr-icons">important_devices</mat-icon>Productos </a></li>
+              <!-- <li routerLinkActive="current-menu-item"><a [routerLink]="['/about']"><i class="ico-cat ico-cat-favorites"></i>About us</a></li> -->
+              <!-- <li><a href="#"><i class="ico-cat ico-cat-comments"></i>Comments</a></li> -->
+              <li routerLinkActive="current-menu-item"><a [routerLink]="['/contact', 'no-reason']"><i class="ico-cat ico-cat-movil"></i>Contacto</a></li>
+          </ul>
+          <div class="logo-wrapper " id="caja-logo-big">
+            <img class="logo_avr3ds float-right" alt="logo de la empresa" src="assets/images/corporativo/logo/logo_XR_80x80.png">
+            <!-- We make Virtual Worlds from real sites -->
+            <!-- <h4 class="lead logo insetshadow">"Creamos Mundos Virtuales desde el Mundo Real."</h4> -->
+            <!-- Todo lo que ustedes puedan imaginar, nosotros podemos hacerlo realidad -->
+        </div>
+        <div class="logo-wrapper " id="caja-logo-small">
+            <img class="logo_avr3ds_small float-right" alt="logo de la empresa" src="assets/images/corporativo/logo/logo_XR_80x80.png">
+            <!-- We make Virtual Worlds from real sites -->
+            <!-- <h4 class="lead logo insetshadow">"Creamos Mundos Virtuales desde el Mundo Real."</h4> -->
+            <!-- Todo lo que ustedes puedan imaginar, nosotros podemos hacerlo realidad -->
+        </div>
+      </div>
+      <!-- <div class="collapse navbar-collapse" id="menucollapse">
+
+        <ul class="filter_menu">
+            <li><a href="#"><i class="ico-cat ico-cat-movil"></i>Movil</a></li>
+            <li><a href="#"><i class="ico-cat ico-cat-calendar"></i>Calendar</a></li>
+            <li class="current-menu-item"><a href="#"><i class="ico-cat ico-cat-favorites"></i>Favorites</a></li>
+            <li><a href="#"><i class="ico-cat ico-cat-fire"></i>Hot stuff</a></li>
+            <li><a href="#"><i class="ico-cat ico-cat-comments"></i>Comments</a></li>
+            <li><a href="#"><i class="ico-cat ico-cat-share"></i>Networking</a></li>
+        </ul> -->
+      <!-- </div> -->
+      <!-- mas iconos por si los necesitas -->
+      <!--
+      <div class="boxed blog_filter icons1 clearfix">
+          <ul class="filter_menu">
+              <li><a href="#"><i class="ico-cat ico-cat-idea"></i>Idea</a></li>
+              <li><a href="#"><i class="ico-cat ico-cat-tv"></i>tv</a></li>
+              <li class="current-menu-item"><a href="#"><i class="ico-cat ico-cat-world"></i>world</a></li>
+              <li><a href="#"><i class="ico-cat ico-cat-gaming"></i>gaming</a></li>
+              <li><a href="#"><i class="ico-cat ico-cat-camera"></i>camera</a></li>
+              <li><a href="#"><i class="ico-cat ico-cat-design"></i>design</a></li>
+          </ul>
+      </div> -->
+      <!--/ Horizontal Filter -->
+  </div>
+  <!-- ##################### Main/menu2.less ################ -->
+
+
+</div>
+<!-- ############################################################### row | menu2 :icons2-->
+<!-- ########################################################################################### Head/header.less ################## -->

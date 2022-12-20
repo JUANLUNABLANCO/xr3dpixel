@@ -1,0 +1,40 @@
+// .fx-btnselect al seleccionarse ese elemento se cambia tridimensionalmente girando de arriba a abjao
+// añadir fx-btnselect a aquellos botones o enlaces que quieras que al tener la clase .active tengan el efecto
+
+.fx-btnselect {
+    transform-style: preserve-3d;
+    transition: all 800ms ease;
+ }
+
+.fx-btnselect::after {
+  top: -100%;
+  left: 0;
+  position: absolute;
+  width: 100%;
+  color: @logo_c !important;
+  content:"\1f533"; // \1f533 cuadrado border 3px content:"\f046";
+  background-color: fade(@dropdown-border-r, 40%);//#73b88f; //fade(aqua, 40%);
+  // background-image: url('../../images/corporativo/logo/glass-button.png');
+  background-image: url('../../images/corporativo/logo/logo_XR_80x80.png');
+  background-position:  center center ;
+  // background-size: 25% 50%;
+  .background-size(25%, 50%);
+  background-repeat: no-repeat;
+
+  color: #000;//@item-like; //@orange2;
+  font-size: 3rem;
+  // border-radius: 5px;
+  .border-radius(5px);
+  // transform-origin: left bottom;
+  .transform-origin;
+  // transform: rotateX(90deg);
+  .transformX(90deg);
+  border: 2px solid @primary;
+ }
+ .fx-btnselect.active {
+   top:100%;
+   left:0;
+  transform-origin: center bottom;
+  // transform: rotateX(-90deg) translateY(100%);
+  .transformXY(-90deg, 100%);
+ }

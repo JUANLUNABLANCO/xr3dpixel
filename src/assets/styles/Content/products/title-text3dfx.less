@@ -1,0 +1,443 @@
+/* #################### fx text 3d */
+.avr_3dtextfx {
+  margin: 0px;
+  box-sizing: border-box;
+  font-family: "Roboto Mono";
+  font-size: 16px;
+  padding: 120px 10px 120px 10px;
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  font-weight: 700;
+  color: #fff !important;
+  // background-image: radial-gradient(#e85e3c, #7c1717);
+  background-repeat: no-repeat;
+  // height: 100vh;
+  // border: 1px solid red;
+  position: absolute;
+  top:70px;
+}
+
+.t3xts {
+  line-height: 1;
+  position: relative;
+  perspective: 1000px;
+  text-transform: uppercase;
+}
+
+.t3xt {
+  transform-style: preserve-3d;
+  position: absolute;
+  top: 0;
+  text-transform: uppercase;
+}
+
+.t3xt-out {
+  animation: text-out 0.5s ease;
+}
+
+.t3xt-in {
+  animation: text-in 0.5s ease;
+}
+
+@keyframes text-out {
+  to {
+    transform: rotateX(90deg);
+    opacity: 0;
+  }
+}
+@keyframes text-in {
+  from {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+  to {
+    transform: rotateX(0deg);
+    opacity: 1;
+  }
+}
+.ref {
+  background-color: #000;
+  border-radius: 3px;
+  padding: 5px 8px;
+  position: absolute;
+  font-size: 16px;
+  bottom: 10px;
+  right: 10px;
+  color: #fff;
+  font-weight: 300;
+  font-family: sans-serif;
+  text-decoration: none;
+}
+.ref::first-letter {
+  font-size: 12px;
+}
+
+
+// ##### letters effect fx
+
+@import (css) url('https://fonts.googleapis.com/css?family=Lobster');
+// div.title_products {
+//   background-color:#DCDCDC;
+//   font-size:100px;
+//   text-align:center;
+//   background-color: #465678;
+//   color: transparent;
+//   text-shadow: 0px 8px 6px rgba(255,255,255,0.5);
+//   -webkit-background-clip: text;
+//      -moz-background-clip: text;
+//           background-clip: text;
+//     font-family: 'Roboto', sans-serif;
+// }
+
+
+// body {
+//   background-color: #02111b;
+// }
+
+.jumbotron {
+  width: 100%;
+  height: 300px;
+
+  display:flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  // align-items: flex-end;
+
+
+}
+.jumbotron-ases, .jumbotron-solu, .jumbotron-even{
+  position: relative;
+  background: transparent;
+}
+
+.jumbotron-ases:before, .jumbotron-solu:before, .jumbotron-even:before{
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center center;
+  opacity: .65;
+
+  filter: gray invert contrast; /* IE5+ */
+  -webkit-filter: grayscale(0.7) invert(.1) contrast(.3); /* Webkit Nightlies & Chrome Canary */
+  -moz-filter: grayscale(0.7) invert(.1) contrast(.3);
+  -o-filter: grayscale(0.7) invert(.1) contrast(.3);
+}
+
+.jumbotron-ases:before{
+  background-image: url('../../../images/content/products/bg_asesoriadigital.jpg');
+}
+.jumbotron-solu:before{
+  background-image: url('../../../images/content/products/bg_soluciones.jpg');
+}
+.jumbotron-even:before{
+  background-image: url('../../../images/content/products/bg_eventos.jpg');
+}
+
+div.clear-space{
+  height: 200px;
+  background: transparent;
+}
+@media(max-width:1200px){
+  div.clear-space{
+    height: 100px;
+    background: transparent;
+  }
+}
+@media(max-width:860px){
+  div.clear-space{
+    height: 50px;
+    background: transparent;
+  }
+}
+
+@import (css) url('https://fonts.googleapis.com/css?family=Dosis:500,800');
+// body {
+//   background-color: #666;
+// }
+
+.text {
+  font-family: 'Roboto', sans-serif;
+  font-size: 80px;
+  text-align: center;
+  font-weight: bold;
+  line-height: 200px;
+  text-transform: uppercase;
+  position: relative;
+  top: 200px;
+}
+
+.effect01 {
+  background-color: #333;
+  color: #fefefe;
+  text-shadow: 0px 1px 0px #c0c0c0, 0px 2px 0px #b0b0b0, 0px 3px 0px #a0a0a0, 0px 4px 0px #909090, 0px 5px 10px rgba(0, 0, 0, 0.6);
+}
+
+.effect02 {
+  color: #333;
+  background-color: #ddd;
+  text-shadow: 1px -1px 0 #767676,  -1px 2px 1px #737272,  -2px 4px 1px #767474,  -3px 6px 1px #787777,  -4px 8px 1px #7b7a7a,  -5px 10px 1px #7f7d7d,  -6px 12px 1px #828181,  -7px 14px 1px #868585,  -8px 16px 1px #8b8a89,  -9px 18px 1px #8f8e8d,  -10px 20px 1px #949392,  -11px 22px 1px #999897,  -12px 24px 1px #9e9c9c,  -13px 26px 1px #a3a1a1,  -14px 28px 1px #a8a6a6,  -15px 30px 1px #adabab,  -16px 32px 1px #b2b1b0,  -17px 34px 1px #b7b6b5, -18px 36px 1px #bcbbba,  -19px 38px 1px #c1bfbf,  -20px 40px 1px #c6c4c4,  -21px 42px 1px #cbc9c8,  -22px 44px 1px #cfcdcd;
+}
+
+.effect03 {
+  color: #202020;
+  background-color: #2d2d2d;
+  text-shadow: -1px -1px 1px #111111, 2px 2px 1px #363636;
+}
+
+.effect04 {
+  background-color: #333;
+  background-image: linear-gradient(45deg, transparent 45%, #ebe9e0 45%, #ebe9e0 55%, transparent 0);
+  background-size: .05em .05em;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -o-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px #111;
+}
+
+.effect05 {
+  color: #DC554F;
+  background-color: #27ae60;
+  z-index: 3;
+}
+
+.effect05:before {
+  content: attr(data-text);
+  width: 100%;
+  line-height: 200px;
+  opacity: .5;
+  position: absolute;
+  top: 2px;
+  left: 5px;
+  background-image: linear-gradient(45deg, transparent 45%, #ebe9e0 45%, #ebe9e0 55%, transparent 0);
+  z-index: -1;
+  background-size: .05em .05em;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -o-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shadowGo 20s linear infinite;
+}
+
+@keyframes shadowGo {
+  0% {
+    background-position: 0 0;
+  }
+  0% {
+    background-position: -100% 100%;
+  }
+}
+.effect06 {
+  -webkit-text-fill-color: transparent;
+  -webkit-text-stroke: 2px #d6d6d6;
+  background: url(http://www.pencilscoop.com/demos/CSS_Text_Effects/images/galaxy.jpg);
+  background-size: cover;
+}
+
+.effect07 {
+  background: url(http://www.pencilscoop.com/demos/CSS_Text_Effects/images/galaxy.jpg) #333;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -o-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-size: cover;
+  animation: 10s infinite linear animate;
+}
+
+.effect07:before {
+  content: "";
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  left: 0;
+  top: 0;
+  background-color: #999;
+  z-index: -1;
+}
+
+@keyframes animate {
+  0% {
+    background-position: 0;
+  }
+  100% {
+    background-position: -1000px 0;
+  }
+}
+.effect08 {
+  color: #fff;
+  height: 200px;
+  transform-origin: center bottom;
+  transform-style: preserve-3d;
+  transition: all 1s;
+  cursor: pointer;
+}
+
+.effect08:hover {
+  transform: rotate3d(1, 0, 0, 40deg);
+}
+
+.effect08 h1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  margin: auto;
+  text-shadow: 0 0 10px rgba(0, 0, 100, 0.5);
+}
+
+.effect08 h1:nth-child(1) {
+  transform: translateZ(4px);
+}
+
+.effect08 h1:nth-child(2) {
+  transform: translateZ(8px);
+}
+
+.effect08 h1:nth-child(3) {
+  transform: translateZ(12px);
+}
+
+.effect08 h1:nth-child(4) {
+  transform: translateZ(16px);
+}
+
+.effect08 h1:nth-child(5) {
+  transform: translateZ(20px);
+}
+
+.effect08 h1:nth-child(6) {
+  transform: translateZ(24px);
+}
+
+.effect08 h1:nth-child(7) {
+  transform: translateZ(28px);
+}
+
+.effect09 {
+  background: #acacac -webkit-gradient(linear, 100% 0, 0 0, from(#acacac), color-stop(0.5, #ffffff), to(#acacac));
+  background-position: -4rem top;
+  /*50px*/
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  -moz-background-clip: text;
+  -o-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 2.2s infinite;
+  -webkit-background-size: 4rem 100%;
+  -moz-background-size: 4rem 100%;
+  -o-background-size: 4rem 100%;
+  background-size: 4rem 100%;
+  /*50px*/
+  position: relative;
+}
+
+/*这么个东东就是为了弄背景*/
+.effect09:after {
+  content: "";
+  width: 100%;
+  height: 100%;
+  background: url(http://www.pencilscoop.com/demos/CSS_Text_Effects/images/galaxy.jpg);
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: -1;
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -4rem top;
+  }
+  70% {
+    background-position: 30rem top;
+  }
+  100% {
+    background-position: 35rem top;
+  }
+}
+
+.text-nowrap {
+  white-space: nowrap;
+}
+
+
+
+// ##########   mine css  text-3d
+
+
+.wrapper-text3d h1.text3d {
+  width: 100%;
+  margin: 0 auto 0 auto;
+  font-family: 'Lato', sans-serif;
+  line-height: 50px;
+  font-size: 2.5rem;
+  padding: 20px 10px;
+  text-align: center;
+  text-transform: uppercase;
+  text-rendering: optimizeLegibility;
+}
+
+/*
+========================
+			3D Effect
+========================
+*/
+.text3d {
+    color: #70869d;
+    letter-spacing: .15em;
+    text-shadow:
+      -1px -1px 1px #efede3,
+      0px 1px 0 #2e2e2e,
+      0px 2px 0 #2c2c2c,
+      0px 3px 0 #2a2a2a,
+      0px 4px 0 #282828,
+      0px 5px 0 #262626,
+      0px 6px 0 #242424,
+      0px 7px 0 #222,
+      0px 8px 0 #202020,
+      0px 9px 0 #1e1e1e,
+      0px 10px 0 #1c1c1c,
+      0px 11px 0 #1a1a1a,
+      0px 12px 0 #181818,
+      0px 13px 0 #161616,
+      0px 14px 0 #141414,
+      0px 15px 0 #121212,
+      2px 20px 5px rgba(0, 0, 0, 0.9),
+      5px 23px 5px rgba(0, 0, 0, 0.3),
+      8px 27px 8px rgba(0, 0, 0, 0.5),
+      8px 28px 35px rgba(0, 0, 0, 0.9);
+
+      transition: all 1s;
+      z-index: 10000;
+ }
+
+ .text3d:hover {
+  color: #fafafa;
+  text-shadow:
+    0 1px 0 #ddd,
+    0 2px 0 #ccc,
+    0 3px 0 #bbb,
+    0 4px 0 #aaa,
+    0 5px 0 #acacac,
+    0 6px 1px rgba(0,0,0,0.1),
+    0 0 5px rgba(0,0,0,0.1),
+    0 1px 3px rgba(0,0,0,0.3),
+    0 3px 5px rgba(0,0,0,0.2),
+    0 5px 10px rgba(0,0,0,0.25),
+    0 10px 10px rgba(0,0,0,0.2),
+    0 20px 20px rgba(0,0,0,0.15);
+
+    transform: rotateX(3deg)  rotateY(0deg) rotateZ(-3deg) translateX(30px) translateY(-20px);
+    -webkit-transform: rotateX(3deg)  rotateY(0deg) rotateZ(-3deg) translateX(30px) translateY(-20px);
+ }
+
+ @media(max-width: 1024px ){
+  .wrapper-text3d h1.text3d {
+    font-size: 1.5rem;
+  }
+ }

@@ -1,0 +1,217 @@
+<div class="container" id='scrollTo_Contact'>
+    <!-- row-->
+    <div class="clear-100"></div>
+    <div class="clear-50"></div>
+    <div class="row">
+        <div class="col-sm-8">
+            <!-- content -->
+            <div class="content" role="main">
+
+                <!-- <h6 class="foo">Contact form with background</h6> -->
+
+                <!-- contact form -->
+                <div class="add-comment contact-form boxed">
+
+                    <div class="comment-form">
+                        <form #contactForm="ngForm" ngNativeValidate (ngSubmit)="SendMessage(contactForm)" id="contactForm" class="ajax_form">
+                            <div class="add-comment-title">
+                                <h3>
+                                    Ponerse en contacto
+                                </h3>
+                            </div>
+                            <div class="form-inner">
+                                <div class="field_text">
+                                    <label for="name" class="label_title">Nombre:</label>
+                                    <input type="text" class="inputtext input_middle required" name="name" #name="ngModel" id="name" [(ngModel)]="contactMessage.name"
+                                    placeholder="nombre de persona"
+                                    pattern="^([A-Za-zñÑáéíóú0-9_]{0,50}[\s]*)+$" title="Admite espacios en blanco, mayúsculas y minúsculas, incluso números"
+                                    required />
+                                    <div *ngIf="name.invalid && (name.dirty || name.touched)" class="alert-danger">
+                                        Debes rellenar este campo correctamente.
+                                    </div>
+                                </div>
+                                <div class="field_text omega">
+                                    <label for="company" class="label_title">Empresa:</label>
+                                    <input type="text" class="inputtext input_middle" name="company" id="company" #company="ngModel" [(ngModel)]="contactMessage.company"
+                                    placeholder="www.miempresa.com, no es obligatorio"
+                                    pattern="^([a-zA-Z0-9àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.:;¡!¿?'-_]{0,50}[\s]*)+$"
+                                    maxlength="50" title="No es obligatorio. Puede contener letras y números y el signo '.', máximo 50 caracteres, por ejemplo: www.miempresa98.com"
+                                     />
+                                     <div *ngIf="company.invalid && (company.dirty || company.touched)" class="alert-danger">
+                                        Debes rellenar este campo correctamente.
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+
+                                <div class="field_text">
+                                    <label for="email" class="label_title">Correo:</label>
+                                    <input type="text" class="inputtext input_middle required" name="email" #email="ngModel" id="email" [(ngModel)]="contactMessage.email"
+                                    placeholder="micorreo@algo.com" maxlength="100"
+                                    pattern="[a-zA-Z0-9.!#$%&amp;’*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)+" title="Un formato permitido, con todos los signos sería: algo_09.algo@algo.algo"
+                                    required
+                                    />
+                                    <div *ngIf="email.invalid && (email.dirty || email.touched)" class="alert-danger">
+                                        Debes rellenar este campo correctamente.
+                                    </div>
+                                </div>
+                                <div class="field_text omega">
+                                    <label for="telephone" class="label_title">Teléfono:</label>
+                                    <input type="text" class="inputtext input_middle required" name="telephone" id="telephone" #telephone="ngModel"
+                                    [(ngModel)]="contactMessage.telephone" placeholder="(34) 666666666" maxlength="15"
+                                    pattern="[\(]?[\d]{0,2}[\)]?[\s]?\d{9}" title="solo admite números del 0-9, mínimo 9 dígitos y ocasionalmente (xx) al principio, tipo (34) 999999999"
+                                    required />
+                                    <div *ngIf="telephone.invalid && (telephone.dirty || telephone.touched)" class="alert-danger">
+                                        Debes rellenar este campo correctamente.
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+
+                                <div class="field_text field_textarea">
+                                    <label for="message" class="label_title">Message</label>
+                                    <textarea cols="30" rows="10" class="textarea textarea_middle required" name="message"
+                                    id="message" #message="ngModel" [(ngModel)]="contactMessage.message"
+                                    pattern="^([a-zA-Z0-9àáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð ,.:;¡!¿?'-_]{1,500}[\s]*)+$"
+                                    required></textarea>
+                                    <div *ngIf="message.invalid && (message.dirty || message.touched)" class="alert-danger">
+                                        Debes rellenar este campo correctamente.
+                                    </div>
+                                </div>
+
+                                <div class="clear"></div>
+
+                                <div class="field_select">
+                                    <label for="contact_subject" class="label_title">Motivo:</label>
+                                    <select class="select_styled" name="subject" id="subject" #subject="ngModel" [(ngModel)]="contactMessage.subject" required>
+                                      <option value="general">Dudas o Preguntas</option>
+                                      <option value="service"  selected="selected">Contratar nuestros productos</option>
+                                      <option value="interview">Entrevistarnos</option>
+                                      <option value="working">Desea trabajar con nosotros</option>
+                                      <option value="other">Otras questiones</option>
+                                  </select>
+                                </div>
+                                <div class="clear"></div>
+                                <div class="field_text">
+                                    <re-captcha [(ngModel)]="contactMessage.captcha" name="captcha" required [siteKey]="sitekey" #captchaControl="ngModel"></re-captcha>
+                                    <!-- <div [hidden]="captchaControl.invalid (captchaControl.dirty || captchaControl.touched)" class="error">Captcha debes resolverlo</div>
+                                    <div [hidden]="!captchaControl.invalid" class="success">Captcha correcto</div> -->
+<!--
+                                    <div *ngIf="captchaControl.valid" class="alert-valid">
+                                        ok.
+                                    </div> -->
+                                </div>
+                                <div class="clear"></div>
+                            </div>
+
+                            <div class="rowSubmit clearfix">
+                                <span class="btn btn-send" >
+                                  <input type="submit" id="send" value="Enviar Mensaje" [disabled]="contactForm.invalid" />
+                                </span>
+
+                                <div class="input_styled checklist">
+                                    <div class="rowCheckbox checkbox-red">
+                                        <input type="checkbox" name="urgent" id="urgente" value="urgent" #urgent="ngModel" [(ngModel)]="contactMessage.urgent"><label for="urgente">Con Carácter Urgente</label></div>
+                                </div>
+                            </div>
+
+                            <div class="clear"></div>
+
+                            <div class="form-inner">
+                                <div class="mytooltip tttop text-warning">
+                                    ¡¡ Acerca de XR3DPixel y el tratamiento de sus datos !!
+                                    <span class="tiptext">Sus datos serán encriptados conforme a la LGPD</span>
+                                    <span class="flecha down"></span>
+                                </div>
+
+                            </div>
+                            <br/>
+
+                        </form>
+                    </div>
+                </div>
+                <!--/ contact form -->
+
+                <!-- <h6 class="foo">Contact form without background</h6>
+
+
+
+                <h6 class="foo">Checkout forms</h6> -->
+
+
+
+            </div>
+            <!--/ content -->
+        </div>
+
+        <div class="col-sm-4">
+            <!-- sidebar -->
+            <div class="sidebar">
+
+                <!-- <h6 class="foo">Sidebars</h6> -->
+
+                <!-- widget categories filter -->
+                <div class="widget-container widget_categories widget_categories_filter boxed">
+                    <div class="inner">
+                        <h3 class="widget-title">Otras formas de contactar</h3>
+                        <ul>
+                            <li>
+                                <a href="tel:609553529" class="clearfix">
+                                    <span class="counter">1</span>
+                                    <span class=" marginleft0">
+
+                                      <i class="material-icons" >perm_phone_msg</i>
+                                      <sup class="note">1</sup>
+                                    </span>
+                                    <div class="mytooltip tttop">Con tu teléfono móvil
+                                        <span class="tiptext">Con las condiciones de llamadas, que tenga contratados con su operador de teléfono.</span>
+                                        <span class="flecha down"></span>
+                                    </div>
+                                </a>
+
+                            </li>
+
+                            <!-- <li>
+                                <a [href]="avr_call_skype | safedom: 'resourceUrl'" class="clearfix">
+                                    <span class="counter">2</span>
+                                    <span>
+                                      <i class="material-icons">cloud</i>
+                                      <sup class="note">2</sup>
+                                    </span>
+                                    <div class="mytooltip tttop">Videollamada por Skype
+                                        <span class="tiptext">Si tiene instalado skype  en su dispositivo</span>
+                                        <span class="flecha down"></span>
+                                    </div>
+                                </a>
+                            </li> -->
+
+                            <li>
+                                <div>
+                                    <a href="mailto:contact@avr3dstudio.com" class="clearfix">
+                                        <span class="counter">2</span>
+                                        <span>
+                                          <i class="material-icons">email</i>
+                                          <sup class="note">3</sup>
+                                        </span>
+                                        <div class="mytooltip tttop">Por Correo Electrónico
+                                            <span class="tiptext">Con el servicio de correo, que tenga instalado en su dispositivo</span>
+                                            <span class="flecha down"></span>
+                                        </div>
+                                    </a>
+                                </div>
+                            </li>
+
+                        </ul>
+                    </div>
+
+                </div>
+
+
+            </div>
+            <!--/ sidebar -->
+        </div>
+    </div>
+    <!--/ row-->
+
+</div>
+<!--/ container-->

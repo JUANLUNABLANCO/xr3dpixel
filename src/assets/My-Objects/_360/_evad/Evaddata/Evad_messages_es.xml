@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano>
+
+<!-- ************************ -->
+<!--         Messages         -->
+<!-- ************************ -->
+
+  <data name="es_project_title"><![CDATA[EVAD ]]></data>
+  <data name="es_project_author_name"><![CDATA[avr3dstudio]]></data>
+  <data name="es_project_author_url"><![CDATA[http://www.avr3dstudio.com]]></data>
+
+
+
+  <data name="es_pano121_title"><![CDATA[]]></data>
+
+
+  <data name="es_pano14_title"><![CDATA[]]></data>
+
+
+  <data name="es_pano17_title"><![CDATA[]]></data>
+
+
+  <data name="es_pano16_title"><![CDATA[]]></data>
+
+
+  <data name="es_pano13_title"><![CDATA[]]></data>
+
+
+  <data name="es_pano10_title"><![CDATA[]]></data>
+
+
+  <data name="es_pano12_title"><![CDATA[]]></data>
+
+
+  <data name="es_pano11_title"><![CDATA[]]></data>
+
+
+  <data name="es_pano63_title"><![CDATA[]]></data>
+
+
+	<data name="es_spotmap185_tooltip"><![CDATA[]]></data>
+	<data name="es_spotmap186_tooltip"><![CDATA[]]></data>
+	<data name="es_spotmap187_tooltip"><![CDATA[]]></data>
+	<data name="es_spotmap188_tooltip"><![CDATA[]]></data>
+	<data name="es_spotmap189_tooltip"><![CDATA[]]></data>
+	<data name="es_spotmap190_tooltip"><![CDATA[]]></data>
+	<data name="es_spotmap191_tooltip"><![CDATA[]]></data>
+	<data name="es_spotmap192_tooltip"><![CDATA[]]></data>
+	<data name="es_spotmap193_tooltip"><![CDATA[]]></data>
+
+
+
+
+  <data name="es_videoControlBarplay_tip"><![CDATA[Iniciar]]></data>
+  <data name="es_videoControlBarpause_tip"><![CDATA[Pausa]]></data>
+  <data name="es_videoControlBarsound_mute_tip"><![CDATA[Eliminar sonido]]></data>
+  <data name="es_videoControlBarsound_low_tip"><![CDATA[Sonido Suave]]></data>
+  <data name="es_videoControlBarsound_medium_tip"><![CDATA[Sonido medio]]></data>
+  <data name="es_videoControlBarsound_high_tip"><![CDATA[Sonido alto]]></data>
+  <data name="es_videoControlBarquality_tip"><![CDATA[Cambiar calidad]]></data>
+  <data name="es_videoControlBarquality_high_tip"><![CDATA[HD]]></data>
+  <data name="es_videoControlBarquality_low_tip"><![CDATA[SD]]></data>
+  <data name="es_videoControlBarprojection_tip"><![CDATA[Proyección]]></data>
+  <data name="es_videoControlBarfullscreen_open_tip"><![CDATA[Pantalla completa]]></data>
+  <data name="es_videoControlBarfullscreen_close_tip"><![CDATA[Salir de Pantalla completa]]></data>
+  <data name="es_videoControlBarsourcelabel"><![CDATA[Fuente]]></data>
+  <data name="es_videoControlBarnormallabel"><![CDATA[Normal]]></data>
+
+
+  <data name="es_vr_setup_hmd0"><![CDATA[SELECCIONE SU HMD]]></data>
+  <data name="es_vr_setup_advanced"><![CDATA[CONFIGURACIÓN AVANZADA]]></data>
+  <data name="es_vr_setup_title"><![CDATA[CONFIGURACIÓN WEB VR]]></data>
+  <data name="es_vr_setup_dvn1"><![CDATA[Dispositivo:]]></data>
+  <data name="es_vr_setup_siz1"><![CDATA[Tamaño de pantalla:]]></data>
+  <data name="es_vr_setup_ipd1"><![CDATA[IPD:]]></data>
+  <data name="es_vr_setup_hmd1"><![CDATA[HMD:]]></data>
+  <data name="es_vr_setup_hmd3"><![CDATA[Personalizar]]></data>
+  <data name="es_vr_setup_cal"><![CDATA[Calibrar el giroscopio]]></data>
+  <data name="es_vr_setup_sav"><![CDATA[GUARDAR]]></data>
+  <data name="es_vr_setup_rst"><![CDATA[REINICIO]]></data>
+  <data name="es_vr_setup_simple"><![CDATA[SIMPLE]]></data>
+  <data name="es_vr_setup_cls"><![CDATA[CERRAR]]></data>
+  <data name="es_vr_setup_m31"><![CDATA[CONFIGURACIÓN HMD]]></data>
+  <data name="es_vr_setup_fov1"><![CDATA[FOV:]]></data>
+  <data name="es_vr_setup_dst1"><![CDATA[Distorsión:]]></data>
+  <data name="es_vr_setup_d2tx"><![CDATA[Distorsión 2:]]></data>
+  <data name="es_vr_setup_vig1"><![CDATA[Viñeteado:]]></data>
+  <data name="es_vr_setup_cac1"><![CDATA[Aberración cromática:]]></data>
+  <data name="es_vr_setup_olp1"><![CDATA[Superposición:]]></data>
+  <data name="es_vr_setup_m35"><![CDATA[RETORNO]]></data>
+  <data name="es_vr_setup_cb1"><![CDATA[GIROSCOPIO]]></data>
+  <data name="es_vr_setup_cb2"><![CDATA[Coloque el dispositivo sobre una superficie plana y [br ] y estable y pulse CALIBRAR[br] para corregir la deriva del giroscopio.]]></data>
+  <data name="es_vr_setup_cb3"><![CDATA[CALIBRAR]]></data>
+  <data name="es_vr_setup_cb4"><![CDATA[REINICIO]]></data>
+  <data name="es_vr_setup_cb5"><![CDATA[RETORNO]]></data>
+  <data name="es_vr_setup_cb6"><![CDATA[Calibrando...]]></data>
+  <data name="es_vr_setup_cb7"><![CDATA[Calibración exitosa]]></data>
+  <data name="es_vr_setup_cb8"><![CDATA[Calibración fracasada]]></data>
+  <data name="es_vr_setup_unavailable"><![CDATA[El modo VR no está disponible en tu dispositivo]]></data>
+
+
+  <data name="es_project_description"><![CDATA[<p style="margin:0cm;margin-bottom:.0001pt;line-height:19.9pt;background:white;mso-background-themecolor:background1;vertical-align:baseline"><span style="font-size:13.5pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#3EA5CD;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm">EVAD &nbsp;es el mayor centro de Andalucía dedicado a la formación en videojuegos y artedigital.</span><span style="font-size: 13.5pt; font-family: Verdana, sans-serif;"><br style="font-variant-ligatures: normal"></span><span style="font-size:13.5pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#3EA5CD;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm">Descubre la amplia oferta formativa para todaslas edades y niveles.</span><span style="font-size: 11.5pt;"><o:p></o:p></span></p><p style="margin:0cm;margin-bottom:.0001pt;line-height:19.9pt;background:white;mso-background-themecolor:background1;vertical-align:baseline;border-image-source: initial;border-image-slice: initial;border-image-width: initial;border-image-outset: initial;border-image-repeat: initial;overflow-wrap: break-word"><span style="font-size: 11.5pt; font-family: Verdana, sans-serif;"><br></span></p><p style="margin:0cm;margin-bottom:.0001pt;line-height:19.9pt;background:white;mso-background-themecolor:background1;vertical-align:baseline;border-image-source: initial;border-image-slice: initial;border-image-width: initial;border-image-outset: initial;border-image-repeat: initial;overflow-wrap: break-word"><span style="font-size: 11.5pt; font-family: Verdana, sans-serif;">Con sede en</span><b><span style="font-size:11.5pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#00A6D0;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm">&nbsp;Málaga,</span></b><span style="font-size: 11.5pt; font-family: Verdana, sans-serif;">&nbsp;en</span><b><span style="font-size:11.5pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#00A6D0;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm">&nbsp;EVAD</span></b><span style="font-size:11.5pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#3EA5CD;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm">&nbsp;</span><span style="font-size: 11.5pt; font-family: Verdana, sans-serif;">(EscuelaSuperior de Videojuegos y Arte Digital)&nbsp; ofrecemos&nbsp;</span><b><span style="font-size:11.5pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#00A6D0;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm">formaciónespecializada</span></b><span style="font-size: 11.5pt; font-family: Verdana, sans-serif;">&nbsp;en todas las áreas del videojuego usando las herramientas,metodologías y tecnologías más actuales. Nuestra principal misión es conseguirque el alumno adquiera un&nbsp;<span style="border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm"><span style="border-image-source: initial;border-image-slice: initial;border-image-width: initial;border-image-outset: initial;border-image-repeat: initial">alto nivel técnico y artístico</span></span>&nbsp;paraque una vez completada su formación&nbsp;</span><b><span style="font-size:11.5pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#00A6D0;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm">se incorpore al mercado laboral.</span></b><span style="font-size: 11.5pt;"><o:p></o:p></span></p><p style="margin:0cm;margin-bottom:.0001pt;line-height:19.9pt;background:white;mso-background-themecolor:background1;vertical-align:baseline;border-image-source: initial;border-image-slice: initial;border-image-width: initial;border-image-outset: initial;border-image-repeat: initial;overflow-wrap: break-word"><span style="font-size: 11.5pt; font-family: Verdana, sans-serif;">Nuestros alumnostrabajan en&nbsp;</span><b><span style="font-size:11.5pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#00A6D0;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm">proyectosreales</span></b><span style="font-size: 11.5pt; font-family: Verdana, sans-serif;">&nbsp;con la misma tecnología usada en las empresas más punterasjunto a los mejores profesionales en activo de cada área, de esta formagarantizamos un aprendizaje útil. En&nbsp;</span><b><span style="font-size:11.5pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#3EA5CD;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm">EVAD</span></b><b><span style="font-size:11.5pt;font-family:&quot;Verdana&quot;,&quot;sans-serif&quot;;color:#00A6D0;border:none windowtext 1.0pt;mso-border-alt:none windowtext 0cm;padding:0cm">&nbsp;</span></b><span style="font-size: 11.5pt; font-family: Verdana, sans-serif;">invertimosen el futuro de nuestros estudiantes, de esta manera conseguimos transformar elesfuerzo en prestigio.</span><span style="font-size: 11.5pt;"><o:p></o:p></span></p>]]></data>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</krpano>

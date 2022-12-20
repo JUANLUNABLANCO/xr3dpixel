@@ -1,0 +1,209 @@
+// @- mine_video_player @@
+
+
+  @button-size: 30px;
+  @button-color: gray !important;
+  @hover-color: lightskyblue !important;
+  @active-color: darkorange !important;
+
+// .container {
+//   // border: 1px solid red;
+// }
+
+.video-wrapper{
+  height: auto;
+  width: 100%;
+  // max-width:100%;
+
+  // border: 1px solid red;
+}
+.video-wrapper video{
+  width: 100%;
+}
+
+.video_controls{
+  display:flex;
+  justify-content: center;
+  align-items: center;
+
+  bottom: ~"calc(@{button-size}) ";
+  width: 100%;
+
+  .my-jumbo();
+
+  // border: 1px solid red;
+}
+
+#my-video{
+    box-shadow:0 0 20px 0px black;
+}
+
+
+
+
+  .button_plyr {
+    box-sizing: border-box;
+    width: @button-size;
+    height: @button-size;
+    font-size: 12px;
+    color: #fafafa;
+    display: flex;
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+  }
+
+  // ##### play
+  .play {
+    border-style: solid;
+    border-width: ~"calc(@{button-size} / 2)" 0 ~"calc(@{button-size} / 2)" @button-size;
+
+    border-color: transparent transparent transparent @button-color
+  }
+  .play:hover {
+    border-color: transparent transparent transparent @hover-color;
+  }
+  .play:active {
+    border-color: transparent transparent transparent @active-color;
+  }
+
+
+// ######### pause
+.pause {
+  border-style: solid;
+  border-width: 0 ~"calc(@{button-size} / 4)";
+  border-color: transparent @button-color;
+}
+.pause:hover {
+  border-color: transparent @hover-color;
+}
+.pause:active {
+  border-color: transparent @active-color;
+}
+.inner-button {
+  border: solid;
+  box-sizing: border-box;
+  width: ~"calc(@{button-size} / 2)";
+  height: ~"calc(@{button-size} / 2)";
+}
+// ##########  stop
+.stop {
+  border-style: solid;
+  width: @button-size;
+  height: @button-size;
+  background: @button-color;
+}
+.stop:hover {
+  background-color: @hover-color;
+}
+.pause:active {
+  background-color: transparent @active-color;
+}
+
+// ########## range seek
+.seek-bar {
+  height: 3px;
+  width: 60%;
+
+}
+input[type='range'] {
+display: block;
+}
+
+input[type='range']:focus {
+outline: none;
+}
+
+input[type='range'],
+input[type='range']::-webkit-slider-runnable-track,
+input[type='range']::-webkit-slider-thumb {
+-webkit-appearance: none;
+}
+
+input[type=range]::-webkit-slider-thumb {
+background-color: #777;
+width: 20px;
+height: 20px;
+border: 3px solid #333;
+border-radius: 50%;
+margin-top: -9px;
+}
+
+input[type=range]::-moz-range-thumb {
+background-color: #777;
+width: 15px;
+height: 15px;
+border: 3px solid #333;
+border-radius: 50%;
+}
+
+input[type=range]::-ms-thumb {
+background-color: #777;
+width: 20px;
+height: 20px;
+border: 3px solid #333;
+border-radius: 50%;
+}
+
+input[type=range]::-webkit-slider-runnable-track {
+background-color: #777;
+height: 3px;
+}
+
+input[type=range]:focus::-webkit-slider-runnable-track {
+outline: none;
+}
+
+input[type=range]::-moz-range-track {
+background-color: #777;
+height: 3px;
+}
+
+input[type=range]::-ms-track {
+background-color: #777;
+height: 3px;
+}
+
+input[type=range]::-ms-fill-lower {
+background-color: HotPink
+}
+
+input[type=range]::-ms-fill-upper {
+background-color: black;
+}
+// ######### range seek
+// ######### mute
+.button_plyr.mute i{
+  font-size: 2rem;
+  color: @button-color;
+}
+// ######### skip
+  .skip-back {
+    border-width: ~"calc(@{button-size} / 4)" ~"calc(@{button-size} / 2)" ~"calc(@{button-size} / 4)" 0;
+    border-color: transparent @button-color transparent transparent;
+    margin: auto 0;
+    transition: all 0.25s ease;
+  }
+  .button:hover .skip-back {
+    border-color: transparent @hover-color transparent transparent;
+  }
+  .button:active .skip-back {
+    border-color: transparent @active-color transparent transparent;
+  }
+  .skip-forward {
+    border-width: ~"calc(@{button-size} / 4)" 0 ~"calc(@{button-size} / 4)" ~"calc(@{button-size} / 2)";
+    border-color: transparent transparent transparent @button-color;
+    margin: auto 0;
+    transition: all 0.25s ease;
+  }
+  .button:hover .skip-forward {
+    border-color: transparent transparent transparent @hover-color;
+  }
+  .button:active .skip-forward {
+    border-color: transparent transparent transparent @active-color;
+  }
+ // ######### full screen
+.button_plyr.full-screen i {
+  font-size: 2rem;
+  color: @button-color;
+}

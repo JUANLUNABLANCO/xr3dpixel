@@ -1,0 +1,187 @@
+/* FX-panorama */
+@init-width : 800px;
+@init-height: 800px;
+
+@pers: 400px;
+@pers-o: 70%;
+
+@rot    :  0px;
+@rot_   : -199px;
+@rot2_  : -399px;
+// tamaño del wrap-slider en ui-kit.css
+
+.panorama-wrap {
+  background: @panel-border ;
+  padding: 0px;
+  box-shadow: 0 0 3px #AAA;
+  margin: 0 auto;
+  width: @init-width;
+  height: @init-height;
+  //con cubo
+  // border: 3px  @panel-border solid;
+  // border-radius: 5px;
+}
+#demo {
+  height: 100%; width: 100%;
+  overflow: hidden;
+  position: relative;
+  -webkit-perspective: @pers;
+  -moz-perspective: @pers;
+  perspective: @pers;
+  perspective-origin: @pers-o ;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  user-select: none;
+}
+#loader {
+  position: absolute;
+  left: 0; top: 198px;
+  height: 4px;
+  background: #222;
+  // border-radius: 2px;
+  .border-radius(2px);
+}
+#panorama {
+  opacity: 0;
+  -webkit-transition: opacity 0.5s ease;
+  -moz-transition: opacity 0.5s ease;
+  transition: opacity 0.5s ease;
+}
+#panorama, #panorama .face  {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  -webkit-transform-style: preserve-3d;
+  -moz-transform-style: preserve-3d;
+  transform-style: preserve-3d;
+}
+
+#panorama .face,  .panorama-label {
+  -webkit-backface-visibility:hidden;
+  -moz-backface-visibility:hidden;
+  backface-visibility:hidden;
+}
+
+// @rot_   : -199px;  @rot:199px;
+// @rot2_  : -399px;
+// ### imagen 1 base del cubo 800x800
+#panorama .face:nth-child(1) {
+  background-image: url("/assets/images/demos/panorama/img01.jpg") ;
+  background-repeat: no-repeat;
+  -webkit-transform: translateY(@rot_) rotateX(90deg) translateZ(@rot2_);
+  -moz-transform: translateY(@rot_) rotateX(90deg) translateZ(@rot2_);
+  transform: translateY(@rot_) rotateX(90deg) translateZ(@rot2_);
+}
+// ### imagen 2 techo del cubo 800x800
+#panorama .face:nth-child(2) {
+  background-image: url("/assets/images/demos/panorama/img02.jpg")  ;
+  background-repeat: no-repeat;
+  -webkit-transform: translateY(@rot) rotateX(-90deg)  translateZ(@rot2_);
+  -moz-transform: translateY(@rot) rotateX(-90deg)  translateZ(@rot2_);
+  transform:  translateY(@rot) rotateX(-90deg)  translateZ(@rot2_);
+}
+// ### imagen 3 cara 3 del cubo 800x400
+#panorama .face:nth-child(3) {
+  background-image: url("/assets/images/demos/panorama/img03.jpg")  ;
+  background-repeat: no-repeat;
+  -webkit-transform: translateY(@rot) rotateY(90deg) translateZ(@rot2_);
+  -moz-transform: translateY(@rot) rotateY(90deg) translateZ(@rot2_);
+  transform:  translateY(@rot) rotateY(90deg) translateZ(@rot2_);
+}
+#panorama .face:nth-child(4) {
+  background-image: url("/assets/images/demos/panorama/img04.jpg") ;
+  background-repeat: no-repeat;
+  -webkit-transform: translateY(@rot) rotateY(-90deg) translateZ(@rot2_);
+  -moz-transform: translateY(@rot) rotateY(-90deg) translateZ(@rot2_);
+  transform: translateY(@rot) rotateY(-90deg) translateZ(@rot2_);
+}
+  #panorama .face:nth-child(5) {
+    background-image: url("/assets/images/demos/panorama/img05.jpg") ;
+    background-repeat: no-repeat;
+    -webkit-transform:translateY(@rot) translateZ(@rot2_);
+    -moz-transform:translateY(@rot) translateZ(@rot2_);
+    transform:translateY(@rot) translateZ(@rot2_);
+  }
+
+  #panorama .face:nth-child(6) {
+    background-image: url("/assets/images/demos/panorama/img06.jpg");
+    background-repeat: no-repeat;
+    -webkit-transform: translateY(@rot) rotateY(180deg) translateZ(@rot2_);
+    -moz-transform: translateY(@rot) rotateY(180deg) translateZ(@rot2_);
+    transform:translateY(@rot)  rotateY(180deg) translateZ(@rot2_);
+  }
+
+
+  @rothr  : -430px;
+.panorama-label {
+  position: absolute;
+  color: #FFF;
+  font-size: 16px;
+  text-shadow: 1px 1px 2px #000;
+  padding: 3px 3px 3px 0;
+  font-style: italic;
+
+}
+.panorama-label:before, .label hr {
+  position: absolute;
+  left: 0; bottom: 0;
+  height: 2px;
+  background: #FFF;
+
+}
+.panorama-label:before {
+  content: '';
+  width: 100%;
+  box-shadow: 1px 1px 2px rgba(0,0,0,.50);
+}
+
+.panorama-label hr {
+  margin: 0; border: 0;
+  box-shadow: 1px -1px 2px rgba(0,0,0,.50);
+  -webkit-transform:  rotate(110deg);
+  -moz-transform: rotate(110deg);
+  transform: rotate(140deg);
+  -webkit-transform-origin: 10px 1px;
+  -moz-transform-origin: 10px 1px;
+  transform-origin: 10px 1px;
+}
+
+.panorama-label hr:before {
+  content: '';
+  position: absolute;
+  right: -3px; top: -3px;
+  height: 8px; width: 8px;
+  background: #FFF;
+  // border-radius: 4px;
+  .border-radius(4px);
+  box-shadow: 1px -1px 2px rgba(0,0,0,.50);
+}
+
+#l1 {
+  left: 140px; bottom: 30px;
+  -webkit-transform: translateZ(50px);
+  -moz-transform: translateZ(50px);
+  transform: translateZ(50px);
+  transform:translateY(@rothr);
+}
+#l1 hr {width: 30px;}
+
+#l2 {
+  left: 190px; bottom: 70px;
+  -webkit-transform: translateZ(70px);
+  -moz-transform: translateZ(70px);
+  transform: translateZ(70px);
+  transform:translateY(@rothr);
+}
+#l2 hr {width: 70px;}
+
+
+
+#l3 {
+  left: 190px; bottom: 50px;
+  -webkit-transform: translateZ(30px);
+  -moz-transform: translateZ(30px);
+  transform: translateZ(30px);
+  transform:translateY(@rothr);
+}
+#l3 hr {width: 50px;}

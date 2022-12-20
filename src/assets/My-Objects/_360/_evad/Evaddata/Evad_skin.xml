@@ -1,0 +1,2524 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<krpano version="1.19-pr16">
+
+    
+  <!-- Spot Style - Load panorama -->
+
+
+  <style name="IconLoadpanorama"
+         url="%FIRSTXML%/spots/hotspot_direction_sequence_user_defaultpoint5.png"
+         visible="false"
+         frame="0"
+         lastframe="15"
+         framewidth="98"
+         frameheight="43"
+         stopspotsequence="false"
+         crop="0|0|98|43"
+         edge="center"
+         rotate="90"
+         zoom="true"
+
+         onloaded="startspotanimation(0.1);if(scene[get(xml.scene)].planar,if(zoom,set(zoom, false);););"
+         onhover="onhoverIconLoadpanorama"
+         onover="onoverIconLoadpanorama"
+         onout="onoutIconLoadpanorama"
+
+
+         />
+  <action name="onhoverIconLoadpanorama">
+    showtooltip('hotspot');
+  </action>
+  <action name="onoverIconLoadpanorama">
+tween(scale, 1.2);
+
+
+  </action>
+  <action name="onoutIconLoadpanorama">
+    hideTooltip();
+    tween(scale, 1);
+
+
+  </action>
+
+
+
+  <!-- unsupported kind of display : PointMap -->
+
+
+      
+  <!-- Picture Spot Style - Default Picture Spot Style -->
+
+  <style name="RectPictureDefaultPictureSpotStyle"
+         distorted="true"
+         visible="false"
+         scale="1.0" 
+         onhover="onhoverRectPictureDefaultPictureSpotStyle"
+         onout="onoutRectPictureDefaultPictureSpotStyle"
+         />
+  <action name="onhoverRectPictureDefaultPictureSpotStyle">
+    showTooltip('hotspot');
+  </action>
+  <action name="onoutRectPictureDefaultPictureSpotStyle">
+    hideTooltip();
+    
+  </action>
+
+
+
+        
+  <!-- Video Spot Style - Default Video Spot Style -->
+  <style name="RectVideoDefaultVideoSpotStyleLoader" url="%FIRSTXML%/spots/loadanimation.png" crop="0|0|64|64" ypos="0" frame="0" distorted="true" visible="false" />
+  <style name="RectVideoDefaultVideoSpotStyle"
+         capture="false"
+         visible="false"
+         distorted="true"
+         scale="1.0"
+         url.html5="%FIRSTXML%/graphics/videoplayer.js"
+         loop="true"
+         autoresume="true"
+         pausedonstart="true"
+         pausedonstart.android="false"
+         pauseothersounds="false"
+         canstart="false"
+         onhover="onhoverRectVideoDefaultVideoSpotStyle"
+         onout="onoutRectVideoDefaultVideoSpotStyle"
+         onvideoready="onvideoreadyRectVideoDefaultVideoSpotStyle"
+         />
+  <style name="RectVideoDefaultVideoSpotStyle" 
+    directionalsound="true" 
+    range="90" 
+    devices="flash" 
+  />
+  <style name="RectVideoDefaultVideoSpotStyle" 
+    directionalsound="false" 
+    devices="html5" 
+  />
+  <style name="RectVideoDefaultVideoSpotStyle" stateVideo="startplaying" devices="no-ios"/>
+  <style name="RectVideoDefaultVideoSpotStyle" stateVideo="startpaused"  devices="ios"   />
+  <style name="RectVideoDefaultVideoSpotStyle" stateVideo="startplaying" devices="ios10" />
+  <action name="onhoverRectVideoDefaultVideoSpotStyle">
+    showTooltip('hotspot');
+  </action>
+  <action name="onoutRectVideoDefaultVideoSpotStyle">
+    hideTooltip();
+  </action>
+  <action name="onvideoreadyRectVideoDefaultVideoSpotStyle">
+    set(isVideoReadyForPlaying, false);
+    if (isvideoready,
+      if(panovideospotsstate,set(canstart, true););
+      if (canstart,
+        set(isVideoReadyForPlaying, true);
+      );
+    );
+    if(isVideoReadyForPlaying,
+
+    if(tour_displayspots,
+      if(ispaused,
+        if(stateVideo == "startplaying",
+          set(stateVideo, "playing");
+          play();
+        );
+      );
+    );
+    if(device.flash OR (device.webgl AND !device.ios),
+      if (tour_soundson,
+        div(volume, tour_soundsvolume, 100);
+      ,
+        set(volume, 0);
+      );
+    ,
+      ifnot(device.ios,
+        if (tour_soundson,
+          js(kpanotour.Sounds.startVideosSounds(get(volume)));
+        ,
+          js(kpanotour.Sounds.stopVideosSounds());
+        );              
+      ,
+        if (tour_soundson,
+          set(muted, false);
+        ,
+          set(muted, true);
+        );
+      );
+    );
+    onvideoreadyspecific();
+    ,
+
+      delayedcall(0.5,onvideoreadyRectVideoDefaultVideoSpotStyle());
+    );
+  </action>
+  <action name="animatevideospotloaderRectVideoDefaultVideoSpotStyle">
+    if(hotspot[%1],
+      if(hotspot[%1].activated,
+        set(hotspot[%1].visible, true);
+      );
+      inc(hotspot[%1].frame,1, 11,0);
+      mul(hotspot[%1].ypos, hotspot[%1].frame, 64);
+      txtadd(hotspot[%1].crop, '0|', get(hotspot[%1].ypos),'|64|64');
+      delayedcall(%2, 0.1, animatevideospotloaderRectVideoDefaultVideoSpotStyle(%1, %2) );
+    ,
+      stopdelayedcall(%2);
+    );
+  </action>
+  <action name="stopvideospotloaderanimationRectVideoDefaultVideoSpotStyle">
+    removehotspot(%1);
+  </action>
+
+
+
+<!-- ********** -->
+<!-- Doble click -->
+<!-- id : doubleclick -->
+<!-- ********** -->
+  <events name="doubleclick_events" keep="true" ondoubleclick="doubleclick_ondoubleclick"/>
+  <action name="doubleclick_ondoubleclick">loadNextScene();
+
+
+  </action>
+<!-- ********** -->
+<!-- Circles Control Bar -->
+<!-- id : CirclesControlBar -->
+<!-- ********** -->
+
+  <krpano CirclesControlBarbarbuilt="false" CirclesControlBarbackgroundwidthwhenclosed="0" CirclesControlBarbackgroundwidthwhenopened="0" CirclesControlBarIsOpened="false" />
+  <events name="CirclesControlBarevents" 
+    onxmlcomplete="CirclesControlBarbuildMenuBar();" 
+
+
+    keep="true" />
+
+
+
+  <action name="CirclesControlBarbuildMenuBar">
+    ifnot (CirclesControlBarbarbuilt, CirclesControlBarbuildMenu(); set(CirclesControlBarbarbuilt, true););
+  </action>
+
+  <style name="CirclesControlBar_btn_style"
+         keep="true"
+         edge="right"
+         align="right"
+         x="0" y="0"
+         width="40" height="40"
+         crop="0|0|60|60"
+         onovercrop="0|60|60|60"
+         ondowncrop="0|120|60|60"
+         />
+  <style name="CirclesControlBar_btn_style_off"
+         keep="true"
+         edge="right"
+         align="right"
+         x="0" y="0"
+         width="40" height="40"
+         />
+
+  <layer name="CirclesControlBar_menu_bg"
+         keep="true"
+         type="container"
+         zorder="2"
+         width="40"
+         height="40"
+         align="bottom"
+         x="0" y="10"
+         maskchildren="true"
+         rotate="0"
+         visible="false"
+         >
+
+    <layer name="CirclesControlBarbtn_gyroscope_off"
+            url="%FIRSTXML%/graphics/circlescontrolbar/btn_gyroscope.png"
+            style="CirclesControlBar_btn_style"
+            onclick="disableGyroscope();
+"
+            devices="html5"
+            visible="false"
+            />
+    <layer name="CirclesControlBarbtn_gyroscope_on"
+            url="%FIRSTXML%/graphics/circlescontrolbar/btn_gyroscope.png"
+            style="CirclesControlBar_btn_style"
+            onclick="enableGyroscope();
+"
+            devices="html5"
+            visible="false"
+            />
+    <layer name="CirclesControlBarbtn_gyroscope_not"
+            url="%FIRSTXML%/graphics/circlescontrolbar/btn_gyroscope_off.png"
+            style="CirclesControlBar_btn_style_off"
+            enabled="true"
+            capture="false"
+            devices="html5"
+            visible="false"
+            />
+
+    <layer name="CirclesControlBarbtn_enter_vr"
+            url="%FIRSTXML%/graphics/circlescontrolbar/btn_vr_mode.png"
+            style="CirclesControlBar_btn_style"
+            onclick="if(scene[get(xml.scene)].full360 AND disableCurrentSceneVrConservation !== true,
+    js(accessWebVr(get(xml.scene),get(videoscenestarttime)));
+,
+    js(accessWebVr(null));
+);"
+            visible="false"
+            devices="html5"
+            />
+    <layer name="CirclesControlBarbtn_enter_vr_not"
+            url="%FIRSTXML%/graphics/circlescontrolbar/btn_vr_mode_off.png"
+            style="CirclesControlBar_btn_style"
+            enabled="true"
+            capture="false"
+            visible="false"
+            devices="html5"
+            />
+
+
+
+
+
+    <layer name="CirclesControlBarbtn_openfs"
+            url="%FIRSTXML%/graphics/circlescontrolbar/btn_enter_fs.png"
+            onclick="enterFullscreen();
+"
+            style="CirclesControlBar_btn_style"
+            visible="false"
+            devices="fullscreensupport"
+            />
+    <layer name="CirclesControlBarbtn_closefs"
+            url="%FIRSTXML%/graphics/circlescontrolbar/btn_close_fs.png"
+            onclick="exitFullscreen();
+"
+            style="CirclesControlBar_btn_style"
+            visible="false"
+            devices="fullscreensupport"
+            />
+
+    <layer name="CirclesControlBarbtn_autorotate_on"
+            url="%FIRSTXML%/graphics/circlescontrolbar/btn_start_autorotation.png"
+            onclick="resumeautorotation();
+"
+            style="CirclesControlBar_btn_style"
+            visible="false"
+            />
+    <layer name="CirclesControlBarbtn_autorotate_off"
+            url="%FIRSTXML%/graphics/circlescontrolbar/btn_stop_autorotation.png"
+            onclick="pauseautorotation();
+"
+            style="CirclesControlBar_btn_style"
+            visible="false"
+            />
+
+
+
+    <layer name="CirclesControlBarbtn_display_help"
+            url="%FIRSTXML%/graphics/circlescontrolbar/btn_help.png"
+            onclick="CirclesControlBardisplayHelp();"
+            style="CirclesControlBar_btn_style"
+            devices="desktop"
+            visible="false"
+            />
+    <layer name="CirclesControlBarbtn_close_help"
+            url="%FIRSTXML%/graphics/circlescontrolbar/btn_help.png"
+            onclick="CirclesControlBarcloseHelp();"
+            style="CirclesControlBar_btn_style"
+            visible="false"
+            devices="desktop"
+            />
+
+
+
+    <layer name="CirclesControlBarbtn_hidecontrols"
+           url="%FIRSTXML%/graphics/circlescontrolbar/btn_hide_controls.png"
+           style="CirclesControlBar_btn_style"
+           onclick="CirclesControlBarhideMenuControls();hideTourControls();
+"
+           visible="false"
+           />
+    <layer name="CirclesControlBarbtn_showcontrols"
+           url="%FIRSTXML%/graphics/circlescontrolbar/btn_show_controls.png"
+           style="CirclesControlBar_btn_style"
+           onclick="CirclesControlBarshowMenuControls();showTourControls();
+"
+           visible="false"
+           />
+ </layer>
+
+
+
+<events name="CirclesControlBarvravailableevent"
+		onvravailable="CirclesControlBarupdateVrButtonsAvailability();"
+		onvrunavailable="CirclesControlBarupdateVrButtonsAvailability();"
+		keep="true" devices="html5" />
+	<krpano CirclesControlBarmenuvravailable="false" />
+	<action name="CirclesControlBarupdateVrButtonsAvailability">
+		if (tour_vrdevices,
+			set(CirclesControlBarmenuvravailable, true);
+		,
+			set(CirclesControlBarmenuvravailable, false);
+		);
+		CirclesControlBarupdateVrButtons();
+	</action>
+	<action name="CirclesControlBarHideVrButtons">
+		set(layer[CirclesControlBarbtn_enter_vr].visible, false);
+		if('%1' == 'true' AND plugin[ptpvrmode],
+			set(layer[CirclesControlBarbtn_enter_vr_not].visible, true);
+		,
+			set(layer[CirclesControlBarbtn_enter_vr_not].visible, false);
+		);
+	</action>
+	<action name="CirclesControlBarShowVrButtons">
+		if (CirclesControlBarmenuvravailable,
+			set(layer[CirclesControlBarbtn_enter_vr].visible, true);
+			set(layer[CirclesControlBarbtn_enter_vr_not].visible, false);
+		,
+			CirclesControlBarHideVrButtons(true);
+		);
+	</action>
+	<action name="CirclesControlBarupdateVrButtons">
+	if (tour_vrdevices,
+		if (CirclesControlBarIsOpened,
+			CirclesControlBarShowVrButtons();
+		,
+			CirclesControlBarHideVrButtons();
+		);
+	,
+		if (CirclesControlBarIsOpened,
+			CirclesControlBarHideVrButtons(true);
+		,
+			CirclesControlBarHideVrButtons();
+		);
+	);
+	</action>
+
+  <events name="CirclesControlBargyroscopeavailableevent"
+          ongyroscopeavailable="CirclesControlBarupdateGyroscopeButtonsAvailability();"
+          ongyroscopeunavailable="CirclesControlBarupdateGyroscopeButtonsAvailability();"
+          ongyroscopeon="CirclesControlBarenableGyroscopeButtons(true);"
+          ongyroscopeoff="CirclesControlBarenableGyroscopeButtons(false);"
+          keep="true" devices="html5" />
+  <krpano CirclesControlBarmenugyroscopeavailable="false" CirclesControlBarmenugyroscopeenabled="false"/>
+  <action name="CirclesControlBarupdateGyroscopeButtonsAvailability">
+    if (tour_gyroscopedevices,
+      set(CirclesControlBarmenugyroscopeavailable, true);
+      CirclesControlBarupdateGyroscopeButtons();
+    ,
+      set(CirclesControlBarmenugyroscopeavailable, false);
+      CirclesControlBarupdateGyroscopeButtons();
+    );
+  </action>
+  <action name="CirclesControlBarenableGyroscopeButtons">
+    if (tour_gyroscopedevices,
+      set(CirclesControlBarmenugyroscopeenabled, %1);
+      CirclesControlBarupdateGyroscopeButtons();
+    );
+  </action>
+	<action name="CirclesControlBarHideGyroscopeButtons">
+		set(layer[CirclesControlBarbtn_gyroscope_off].visible, false);
+		set(layer[CirclesControlBarbtn_gyroscope_on].visible, false);
+		if('%1' == 'true' AND plugin[gyroscope],
+			set(layer[CirclesControlBarbtn_gyroscope_not].visible, true);
+		,
+			set(layer[CirclesControlBarbtn_gyroscope_not].visible, false);
+		);
+	</action>
+	<action name="CirclesControlBarShowGyroscopeButtons">
+		if (CirclesControlBarmenugyroscopeavailable,
+			if (CirclesControlBarmenugyroscopeenabled,
+				set(layer[CirclesControlBarbtn_gyroscope_off].visible, true);
+				set(layer[CirclesControlBarbtn_gyroscope_on].visible, false);
+			,
+				set(layer[CirclesControlBarbtn_gyroscope_off].visible, false);
+				set(layer[CirclesControlBarbtn_gyroscope_on].visible, true);
+			);
+			set(layer[CirclesControlBarbtn_gyroscope_not].visible, false);
+		,
+			CirclesControlBarHideGyroscopeButtons(true);
+		);
+	</action>
+	<action name="CirclesControlBarupdateGyroscopeButtons">
+	if (tour_gyroscopedevices,
+		if (CirclesControlBarIsOpened,
+			CirclesControlBarShowGyroscopeButtons();
+		,
+			CirclesControlBarHideGyroscopeButtons();
+		);
+	,
+		if (CirclesControlBarIsOpened,
+			CirclesControlBarHideGyroscopeButtons(true);
+		,
+			CirclesControlBarHideGyroscopeButtons();
+		);
+	);
+	</action>
+
+
+
+  <action name="CirclesControlBarhideMenuControls">
+    set(CirclesControlBarIsOpened, false);
+    set(layer[CirclesControlBarbtn_hidecontrols].visible, false);
+    set(layer[CirclesControlBarbtn_showcontrols].visible, true);
+
+
+	CirclesControlBarupdateFullscreenButtons();
+	CirclesControlBarupdateHelpButtons();
+
+
+	CirclesControlBarupdateAutorotationButtons();
+
+	CirclesControlBarupdateGyroscopeButtons();
+
+
+	CirclesControlBarupdateVrButtons();
+
+
+
+	set(layer[CirclesControlBar_menu_bg].width, get(CirclesControlBarbackgroundwidthwhenclosed));
+
+	set(layer[CirclesControlBar_menu_bg].visible, true);
+  </action>
+  <action name="CirclesControlBarshowMenuControls">
+    set(CirclesControlBarIsOpened, true);
+    set(layer[CirclesControlBarbtn_hidecontrols].visible, true);
+    set(layer[CirclesControlBarbtn_showcontrols].visible, false);
+	set(layer[CirclesControlBar_menu_bg].visible, true);
+
+
+	CirclesControlBarupdateFullscreenButtons();
+	CirclesControlBarupdateHelpButtons();
+
+
+	CirclesControlBarupdateAutorotationButtons();
+
+	CirclesControlBarupdateGyroscopeButtons();
+	CirclesControlBarupdateVrButtons();
+
+
+
+
+    set(layer[CirclesControlBar_menu_bg].width, get(CirclesControlBarbackgroundwidthwhenopened));
+  </action>
+
+  <layer name="CirclesControlBarhelpScreenBg"
+         align="center"
+         keep="true"
+         onclick="CirclesControlBarcloseHelp();"
+         url="%FIRSTXML%/graphics/circlescontrolbar/help_screen_bg.png"
+         visible="false"
+         rotate="-90"
+         height="50%"
+         width="prop"
+         zorder="97"
+         x="100%" />
+  <layer name="CirclesControlBarhelpScreenFg"
+         align="center"
+         keep="true"
+         onclick="CirclesControlBarcloseHelp();"
+         url="%FIRSTXML%/graphics/circlescontrolbar/help_screen_fg.png"
+         height="50%"
+         width="prop"
+         visible="false"
+         rotate="90"
+         zorder="98"
+         x="-100%"
+         displayed="false" />
+  <action name="CirclesControlBardisplayHelp">
+  if (device.desktop,
+    set(layer[CirclesControlBarhelpScreenFg].displayed,true);
+    set(layer[CirclesControlBarhelpScreenBg].visible,true);
+    set(layer[CirclesControlBarhelpScreenFg].visible,true);
+    tween(layer[CirclesControlBarhelpScreenFg].rotate,0, 1);
+    tween(layer[CirclesControlBarhelpScreenFg].x,0, 1);
+    tween(layer[CirclesControlBarhelpScreenBg].rotate,0, 1);
+    tween(layer[CirclesControlBarhelpScreenBg].x,0, 1);
+    CirclesControlBarupdateHelpButtons();
+  );
+  </action>
+  <action name="CirclesControlBarcloseHelp">
+  if (device.desktop,
+    set(layer[CirclesControlBarhelpScreenFg].displayed,false);
+    tween(layer[CirclesControlBarhelpScreenFg].rotate,  90, 1, easeOutQuad, set(layer[CirclesControlBarhelpScreenFg].visible,false););
+    tween(layer[CirclesControlBarhelpScreenFg].x, -100%, 1);
+    tween(layer[CirclesControlBarhelpScreenBg].rotate, -90, 1, easeOutQuad, set(layer[CirclesControlBarhelpScreenBg].visible,false););
+    tween(layer[CirclesControlBarhelpScreenBg].x, 100%, 1);
+    CirclesControlBarupdateHelpButtons();
+  );
+  </action>
+	<action name="CirclesControlBarHideHelpButtons">
+		set(layer[CirclesControlBarbtn_display_help].visible, false);
+		set(layer[CirclesControlBarbtn_close_help].visible, false);
+	</action>
+	<action name="CirclesControlBarShowHelpButtons">
+		if (layer[CirclesControlBarhelpScreenFg].displayed,
+			set(layer[CirclesControlBarbtn_close_help].visible, true);
+			set(layer[CirclesControlBarbtn_display_help].visible, false);
+		,
+			set(layer[CirclesControlBarbtn_display_help].visible, true);
+			set(layer[CirclesControlBarbtn_close_help].visible, false);
+		);
+	</action>
+	<action name="CirclesControlBarupdateHelpButtons">
+	if (device.desktop,
+		if (CirclesControlBarIsOpened,
+			CirclesControlBarShowHelpButtons();
+		,
+			CirclesControlBarHideHelpButtons();
+		);
+	,
+		CirclesControlBarHideHelpButtons();
+	);
+	</action>
+
+
+
+
+  <events name="CirclesControlBarmenufullscreenchangeevent"
+          onenterfullscreen="CirclesControlBarupdateFullscreenButtons();"
+          onexitfullscreen="CirclesControlBarupdateFullscreenButtons();"
+          keep="true"/>
+	<action name="CirclesControlBarHideFullscreenButtons">
+		set(layer[CirclesControlBarbtn_openfs].visible , false);
+		set(layer[CirclesControlBarbtn_closefs].visible, false);
+	</action>
+	<action name="CirclesControlBarShowFullscreenButtons">
+		if (device.fullscreensupport,
+			if(tour_fullscreen,
+				set(layer[CirclesControlBarbtn_openfs].visible , false);
+				set(layer[CirclesControlBarbtn_closefs].visible, true);
+			,
+				set(layer[CirclesControlBarbtn_openfs].visible ,true);
+				set(layer[CirclesControlBarbtn_closefs].visible,false);
+			);
+		,
+			CirclesControlBarHideFullscreenButtons();
+		);
+	</action>
+	<action name="CirclesControlBarupdateFullscreenButtons">
+		if (CirclesControlBarIsOpened,
+			CirclesControlBarShowFullscreenButtons();
+		,
+			CirclesControlBarHideFullscreenButtons();
+		);
+	</action>
+
+	<events name="CirclesControlBarAutorotationEvents"
+		onstartautorotation="CirclesControlBarupdateAutorotationButtons();"
+		onresumeautorotation="CirclesControlBarupdateAutorotationButtons();"
+		onstopautorotation="CirclesControlBarupdateAutorotationButtons();"
+		onpauseautorotation="CirclesControlBarupdateAutorotationButtons();"
+		keep="true"/>
+	<action name="CirclesControlBarHideAutorotationButtons">
+		set(layer[CirclesControlBarbtn_autorotate_off].visible, false);
+		set(layer[CirclesControlBarbtn_autorotate_on].visible , false);
+	</action>
+	<action name="CirclesControlBarShowAutorotationButtons">
+		if(autorotate.enabled == false,
+			set(layer[CirclesControlBarbtn_autorotate_off].visible, false);
+			set(layer[CirclesControlBarbtn_autorotate_on].visible , true);
+		,
+			set(layer[CirclesControlBarbtn_autorotate_off].visible, true);
+			set(layer[CirclesControlBarbtn_autorotate_on].visible , false);
+		);
+	</action>
+	<action name="CirclesControlBarupdateAutorotationButtons">
+		if (CirclesControlBarIsOpened,
+			CirclesControlBarShowAutorotationButtons();
+		,
+			CirclesControlBarHideAutorotationButtons();
+		);
+	</action>
+
+
+
+  <action name="CirclesControlBarbuildMenu">
+    
+    set(CirclesControlBarbutton_pos, 0);
+
+	set(CirclesControlBarbackgroundwidthwhenclosed, 40);
+    set(layer[CirclesControlBarbtn_hidecontrols].x, get(CirclesControlBarbutton_pos));
+    set(layer[CirclesControlBarbtn_showcontrols].x, get(CirclesControlBarbutton_pos));
+    inc(CirclesControlBarbutton_pos, 45);
+
+
+
+      if (device.desktop,
+        set(layer[CirclesControlBarbtn_display_help].x, get(CirclesControlBarbutton_pos));
+        set(layer[CirclesControlBarbtn_close_help].x  , get(CirclesControlBarbutton_pos));
+        inc(CirclesControlBarbutton_pos, 45);
+      );
+
+      if (device.fullscreensupport,
+        set(layer[CirclesControlBarbtn_openfs].x , get(CirclesControlBarbutton_pos));
+        set(layer[CirclesControlBarbtn_closefs].x, get(CirclesControlBarbutton_pos));
+        inc(CirclesControlBarbutton_pos, 45);
+      );
+
+
+
+      set(layer[CirclesControlBarbtn_autorotate_on].x , get(CirclesControlBarbutton_pos));
+      set(layer[CirclesControlBarbtn_autorotate_off].x, get(CirclesControlBarbutton_pos));
+      inc(CirclesControlBarbutton_pos, 45);
+
+
+
+
+    if(plugin[ptpvrmode] AND device.html5,
+      set(layer[CirclesControlBarbtn_enter_vr].x, get(CirclesControlBarbutton_pos));
+      set(layer[CirclesControlBarbtn_enter_vr_not].x, get(CirclesControlBarbutton_pos));
+      inc(CirclesControlBarbutton_pos, 45);
+    );
+
+
+      if(plugin[gyroscope],
+        set(CirclesControlBarDisplayGyroscopeButton, false);
+        if (device.tablet, set(CirclesControlBarDisplayGyroscopeButton, true););
+        if (device.mobile, set(CirclesControlBarDisplayGyroscopeButton, true););
+        if(CirclesControlBarDisplayGyroscopeButton,
+          set(layer[CirclesControlBarbtn_gyroscope_on].x , get(CirclesControlBarbutton_pos));
+          set(layer[CirclesControlBarbtn_gyroscope_off].x, get(CirclesControlBarbutton_pos));
+          set(layer[CirclesControlBarbtn_gyroscope_not].x, get(CirclesControlBarbutton_pos));
+          inc(CirclesControlBarbutton_pos, 45);
+        );
+      );
+
+
+
+
+      dec(CirclesControlBarbutton_pos, 5);
+
+      set(CirclesControlBarbackgroundwidthwhenopened, get(CirclesControlBarbutton_pos));
+
+
+    
+      set(layer[CirclesControlBar_menu_bg].width, get(CirclesControlBarbackgroundwidthwhenopened));
+	
+	
+	
+    </action>
+
+	<events name="CirclesControlBarStartTourEvents" onTourStart="CirclesControlBarCallOnStartTour();" keep="true" />
+	
+	<action name="CirclesControlBarCallOnStartTour">
+		
+		CirclesControlBarshowMenuControls();
+	</action>
+
+
+
+<!-- ********** -->
+<!-- Barra de Control de Vídeo -->
+<!-- id : videoControlBar -->
+<!-- ********** -->
+
+
+
+
+
+
+	<events name="videoControlBar_events"
+		onenterfullscreen.fullscreensupport="videoControlBar_fs_button_update(true);"
+		onexitfullscreen.fullscreensupport="videoControlBar_fs_button_update(false);"
+
+		onTourStart="set(layer[videoControlBar_footer].canstart, true);if(layer[videoControlBar_footer].isready,videoControlBar_show(););"
+		videointerfaceready="videoControlBar_init_menu();set(layer[videoControlBar_footer].isready, true);if(layer[videoControlBar_footer].canstart,videoControlBar_show(););"
+		onremovepano="videoControlBar_hide();"
+		onpausevideointerface="videoControlBar_update_pausestate();"
+		onplayvideointerface="videoControlBar_update_pausestate();"
+		changetourlanguage="videoControlBar_update_language();"
+		keep="true"
+		/>
+
+
+	<action name="videoControlBar_init_menu">
+		ifnot(device.fullscreensupport,
+			
+			ifnot(videoControlBar_fullscreenoff,set(layer[videoControlBar_pj_button].x, 0););
+			ifnot(videoControlBar_fullscreenoff,set(layer[videoControlBar_quality].x, calc(layer[videoControlBar_quality].x - 30)););
+			set(videoControlBar_fullscreenoff, true);
+		);
+		if(!device.panovideosupport OR scene[get(xml.scene)].planar == true,
+			set(layer[videoControlBar_pj_button].visible, false);
+		,
+			set(layer[videoControlBar_pj_button].visible, true);
+		);
+		if(videoControlBar_fullscreenoff,
+			set(layer[videoControlBar_pj_button].x, 0);
+		,
+			set(layer[videoControlBar_pj_button].x, calc(layer[videoControlBar_fs_button].x + 30));
+			set(layer[videoControlBar_quality].x, calc(layer[videoControlBar_pj_button].x + 30));
+		);
+		set(videoControlBar_menuposx, 2);
+		set(videoControlBar_menuposy, 40);
+		videoControlBar_createmenu(qualitymenu, bottomright, 150, get(videoControlBar_menuposx), get(videoControlBar_menuposy));
+		videoControlBar_setup_video_quality();
+		set(plugin[get(videointerface_video)].current_videoscene_name, get(scene[get(xml.scene)].name));
+
+		if(device.panovideosupport AND scene[get(xml.scene)].planar == false,
+			videoControlBar_createmenu(viewmenu, bottomright, 150, get(videoControlBar_menuposx), get(videoControlBar_menuposy));
+			getmessage(projection_caption, videoControlBarsourcelabel);
+			videoControlBar_addmenuitem(viewmenu, sour, get(projection_caption), videoControlBar_source_view() );
+			getmessage(projection_caption, videoControlBarnormallabel);
+			videoControlBar_addmenuitem(viewmenu, rect, get(projection_caption), videoControlBar_rectilinear_view() );
+
+			videoControlBar_selectmenuitem(viewmenu, rect);
+		);
+	</action>
+
+	<action name="videoControlBar_update_language">
+
+		if(scene[get(xml.scene)].name,
+			getmessage(layer[videoControlBar_title].html, get(scene[get(xml.scene)].titleid));
+			escape(layer[videoControlBar_title].html);
+		);
+
+if(videoControlBar_quality_counter GT 1,
+	getmessage(quality_caption_high, videoControlBarquality_high_tip);
+	getmessage(quality_caption_low, videoControlBarquality_low_tip);
+	videoControlBar_updatemenuitem(qualitymenu, q1, get(quality_caption_high));
+	videoControlBar_updatemenuitem(qualitymenu, q1, get(quality_caption_low));
+	if(videoControlBar_current_videoscene_quality == 'low',
+		videoControlBar_changequality_txt(get(quality_caption_low));
+	,
+		videoControlBar_changequality_txt(get(quality_caption_high));
+	);
+);
+	getmessage(projection_caption, videoControlBarsourcelabel);
+	videoControlBar_updatemenuitem(viewmenu, sour, get(projection_caption));
+	getmessage(projection_caption, videoControlBarnormallabel);
+	videoControlBar_updatemenuitem(viewmenu, rect, get(projection_caption));
+	</action>
+
+
+	<action name="videoControlBar_show">
+		if(scene[get(xml.scene)].video,
+			set(videointerface_controlbar_update, 'videoControlBar_apply_timer');
+			videoControlBar_show_header();
+			videoControlBar_show_seekbar();
+			videoControlBar_show_footer();
+		);
+	</action>
+	<action name="videoControlBar_hide">
+		videoControlBar_hide_header();
+		videoControlBar_hide_seekbar();
+		videoControlBar_hide_footer();
+		videoControlBar_hidemenu(viewmenu);
+		videoControlBar_hidemenu(qualitymenu);
+	</action>
+
+
+	<layer name="videoControlBar_header"
+		type="container"
+		bgcolor="0x000000"
+		bgalpha="0.7000076295109483"
+		align="lefttop"
+		x="0"
+		y="0"
+		zorder="3"
+		enabled="true"
+		capture="true"
+		visible="false"
+		height="30"
+		width="100%"
+		keep="true"
+		>
+		<layer name="videoControlBar_title"
+			type="image"
+			style="videoControlBar_titletxt_base"
+			x="5"
+			y="1"
+			zorder="1"
+			visible="false"
+			/>
+	</layer>
+	<action name="videoControlBar_hide_header">
+		set(layer[videoControlBar_header].visible, false);
+	</action>
+	<action name="videoControlBar_show_header">
+		if(scene[get(xml.scene)].name,
+			getmessage(layer[videoControlBar_title].html, get(scene[get(xml.scene)].titleid));
+			escape(layer[videoControlBar_title].html);
+			set(layer[videoControlBar_title].visible, true);
+		);
+		set(layer[videoControlBar_header].visible, true);
+	</action>
+
+
+	<layer name="videoControlBar_footer"
+		type="container"
+		bgcolor="0x000000"
+		bgalpha="0.7000076295109483"
+		align="bottomleft"
+		x="0"
+		y="0"
+		zorder="3"
+		enabled="true"
+		capture="false"
+		visible="false"
+		height="30"
+		width="100%"
+		keep="true"
+		>
+
+
+		<layer name="videoControlBar_pp_button"
+			style="videoControlBar_baseimage|videoControlBar_over" crop="0|0|30|30"
+			align="bottomleft" x="0" y="0" zorder="1" width="30" height="30"
+			onclick="videoControlBar_togglepause();"
+			tooltip="videoControlBarplay_tip"
+			/>
+
+		<layer name="videoControlBar_snd_button"
+			style="videoControlBar_baseimage|videoControlBar_over" crop="210|0|30|30"
+			align="bottomleft" x="30" y="0" zorder="1" width="30" height="30"
+			onclick="videoControlBar_togglesound();"
+			tooltip="videoControlBarsound_mute_tip"
+			/>
+
+
+		<layer name="videoControlBar_timer"
+			style="videoControlBar_timertxt_base" 
+			x="65" y="0" zorder="1"
+			html=""
+			onautosized="videoControlBar_changetotaltime_pos();"
+			/>
+
+		<layer name="videoControlBar_timer_total"
+			style="videoControlBar_timertxt_base" 
+			x="65" y="0" zorder="1"
+			baseposx="65"
+			html=""
+			/>
+
+
+		<layer name="videoControlBar_fs_button" devices="fullscreensupport"
+			style="videoControlBar_baseimage|videoControlBar_over" crop="60|0|30|30"
+			align="bottomright" x="0" y="0" zorder="1" width="30" height="30"
+			fs_state="false"
+			onclick="videoControlBar_hidemenu(viewmenu);videoControlBar_hidemenu(qualitymenu);if(fs_state == false,enterFullscreen();
+,exitFullscreen();
+);"
+			tooltip="videoControlBarfullscreen_open_tip"
+			/>
+
+
+		<layer name="videoControlBar_pj_button" devices="panovideosupport"
+			style="videoControlBar_baseimage|videoControlBar_over" crop="240|0|30|30"
+			align="bottomright" x="30" y="0" zorder="1" width="30" height="30"
+			onclick="videoControlBar_toggle_viewmenu();"
+			tooltip="videoControlBarprojection_tip"
+			/>
+
+
+		<layer name="videoControlBar_quality" devices="panovideosupport"
+			type="container" width="10" height="30"
+			align="bottomright" x="65" y="0" zorder="1"
+			>
+				<layer name="videoControlBar_quality_button_txt"
+					style="videoControlBar_menutxt_base|videoControlBar_menutxt_normal" 
+					align="bottomright" x="0" y="0" zorder="2"
+					html=""
+					onclick="videoControlBar_toggle_qualitymenu();"
+					onautosized="videoControlBar_changequality_pos();"
+					/>
+
+				<layer name="videoControlBar_quality_button"
+					style="videoControlBar_qualityimage" width="10" height="prop"
+					align="right" x="0" y="0" zorder="2"
+					onclick="videoControlBar_toggle_qualitymenu();"
+					tooltip="videoControlBarquality_tip"
+					onhover="videoControlBar_btntooltip_show();"
+					onout="videoControlBar_btntooltip_hide();"
+					/>
+		</layer>
+
+	</layer>
+	<action name="videoControlBar_hide_footer">
+		set(layer[videoControlBar_footer].visible, false);
+	</action>
+	<action name="videoControlBar_show_footer">
+		set(layer[videoControlBar_footer].visible, true);
+	</action>
+
+
+	<layer name="videoControlBar_btntooltip"
+		style="videoControlBar_tooltiptxt_base" 
+		zorder="3"
+		html=""
+		edge="center"
+		visible="false"
+		keep="true"
+		xoffset="0"
+		yoffset="0"
+		/>
+	<action name="videoControlBar_btntooltip_show">
+		if(tooltip,
+			showTooltip('plugin', videoControlBar_btntooltip, bottom);
+		);
+	</action>
+	<action name="videoControlBar_btntooltip_hide">
+		hideTooltip();
+	</action>
+
+
+	<layer name="videoControlBar_seekbar"
+		type="container"
+		bgcolor="0x000000"
+		bgalpha="0.7000076295109483"
+		align="bottomleft"
+		x="0"
+		y="30"
+		zorder="4"
+		enabled="true"
+		capture="true"
+		bgcapture="true"
+		visible="true"
+		height="10"
+		width="100%"
+		ondown="if(plugin[get(videointerface_video)].isvideoready, asyncloop(pressed, videoControlBar_seekbar_seeking() ); );"
+		onup="if(plugin[get(videointerface_video)].isvideoready, plugin[get(videointerface_video)].seek(get(seekpos_percent_text)); );"
+
+		onhover="videoControlBar_timetooltip_show();"
+		onout="videoControlBar_timetooltip_hide();"
+
+		keep="true"
+		>
+
+
+		<layer name="videoControlBar_timetooltip"
+			style="videoControlBar_tooltiptxt_base" 
+			x="0" y="18" zorder="2"
+			html=""
+			tooltip=""
+			edge="center"
+			visible="false"
+			/>
+
+		<layer name="videoControlBar_loader"
+			type="container"
+			bgcolor="0xff6600"
+			bgalpha="0.50000762951094835"
+			align="bottomleft"
+			x="0"
+			y="0"
+			zorder="1"
+			enabled="false"
+			capture="false"
+			visible="true"
+			height="10"
+			width="0%"
+			/>
+		<layer name="videoControlBar_time"
+			type="container"
+			bgcolor="0xff6600"
+			bgalpha="1"
+			align="bottomleft"
+			x="0"
+			y="0"
+			zorder="2"
+			enabled="false"
+			capture="false"
+			visible="true"
+			height="10"
+			width="0%"
+			/>
+	</layer>
+	<action name="videoControlBar_hide_seekbar">
+		<!-- set(layer[videoControlBar_seekbar].y, 0); -->
+		set(layer[videoControlBar_seekbar].visible, false);
+	</action>
+	<action name="videoControlBar_show_seekbar">
+		<!-- set(layer[videoControlBar_seekbar].y, 30); -->
+		set(layer[videoControlBar_seekbar].visible, true);
+	</action>
+
+
+	<action name="videoControlBar_seekbar_seeking">
+		screentolayer(videoControlBar_seekbar, mouse.stagex, mouse.stagey, lx, ly);
+		div(seekpos, lx, layer[videoControlBar_seekbar].pixelwidth);
+		mul(seekpos_percent, seekpos, 100);
+		clamp(seekpos_percent, 0, 100);
+		txtadd(seekpos_percent_text, get(seekpos_percent), '%');
+	</action>
+
+	<action name="videoControlBar_timetooltip_show">
+		screentolayer(videoControlBar_seekbar, mouse.stagex, mouse.stagey, lx, ly);
+		div(tooltippos, lx, layer[videoControlBar_seekbar].pixelwidth);
+		mul(tooltippos_percent, tooltippos, 100);
+		clamp(tooltippos_percent, 0, 100);
+
+		copy(vpc, plugin[get(videointerface_video)]);
+		if(vpc AND vpc.loaded AND vpc.isvideoready AND vpc.isseeking == false,
+			copy(tt, vpc.totaltime);
+
+			mul(ttime, tooltippos_percent, tt);
+			div(ttime, 100);
+
+			videoControlBar_format_sec_to_hhmmss(ttime, layer[videoControlBar_timetooltip].html, false);
+			
+			set(layer[videoControlBar_timetooltip].x, get(lx));
+			set(layer[videoControlBar_timetooltip].visible, true);
+		);
+		delete(vpc);
+	</action>
+	<action name="videoControlBar_timetooltip_hide">
+		set(layer[videoControlBar_timetooltip].visible, false);
+	</action>
+
+
+
+	<action name="videoControlBar_fs_button_update" devices="fullscreensupport">
+		if (%1,
+			set(layer[videoControlBar_fs_button].fs_state, true);
+			set(layer[videoControlBar_fs_button].crop, 90|0|30|30);
+			set(layer[videoControlBar_fs_button].tooltip,'videoControlBarfullscreen_close_tip');
+		,
+			set(layer[videoControlBar_fs_button].fs_state, false);
+			set(layer[videoControlBar_fs_button].crop, 60|0|30|30);
+			set(layer[videoControlBar_fs_button].tooltip,'videoControlBarfullscreen_open_tip');
+		);
+	</action>
+
+
+	<action name="videoControlBar_createmenu">
+		set(name_w, 'videoControlBar_%1_window');
+		set(name_m, 'videoControlBar_%1_menu');
+		addlayer(get(name_w));
+		addlayer(get(name_m));
+		copy(layer_w, layer[get(name_w)]);
+		copy(layer_m, layer[get(name_m)]);
+
+		set(layer_w.parent, 'videoControlBar_footer');
+		set(layer_w.type, container);
+		set(layer_w.maskchildren, true);
+		set(layer_w.align, %2);
+		set(layer_w.width, %3);
+		set(layer_w.height, 0);
+		set(layer_w.x, %4);
+		set(layer_w.y, %5);
+		set(layer_w.bgcolor, 0x000000);
+		set(layer_w.bgalpha, 0.7000076295109483);
+		set(layer_w.visible, false);
+
+		set(layer_m.state, 'closed');
+		set(layer_m.parent, get(name_w));
+		set(layer_m.type, container);
+		set(layer_m.maskchildren, true);
+		set(layer_m.align, lefttop);
+		sub(layer_m.width, %3, 12);
+		set(layer_m.height, 6);
+		set(layer_m.x, 6);
+		set(layer_m.y, 6);
+	</action>
+
+
+	<action name="videoControlBar_addmenuitem">
+		set(name_w, 'videoControlBar_%1_window');
+		set(name_m, 'videoControlBar_%1_menu');
+		set(name_i, 'videoControlBar_%1_menuitem_%2');
+		addlayer(get(name_i));
+		copy(layer_w, layer[get(name_w)]);
+		copy(layer_m, layer[get(name_m)]);
+		copy(layer_i, layer[get(name_i)]);
+
+		set(layer_i.parent, get(name_m));
+		sub(layer_i.y, layer_m.height, 6);
+
+		set(caption, %3);
+		set(method, %4);
+
+		if(caption,
+			set(layer_i.html, %3);
+			layer_i.loadstyle(videoControlBar_menuitem_base|videoControlBar_menuitem_normal);
+			add(layer_m.height, 26);
+			add(layer_w.height, layer_m.height, 6);
+		,
+			add(layer_i.y, 6);
+			set(layer_i.width, 100%);
+			set(layer_i.height, 1);
+			set(layer_i.type, container);
+			set(layer_i.bgalpha, 1.0);
+			set(layer_i.bgcolor, 0xFFFFFF);
+			add(layer_m.height, 13);
+			add(layer_w.height, layer_m.height, 6);
+		);
+		if(method,
+			set(layer_i.onclick, %4);
+		);
+		delete(caption, method, name_w, name_m, name_i, layer_i);
+	</action>
+
+
+	<action name="videoControlBar_updatemenuitem">
+		set(name_i, 'videoControlBar_%1_menuitem_%2');
+		addlayer(get(name_i));
+		copy(layer_i, layer[get(name_i)]);
+
+		set(caption, %3);
+
+		if(caption,
+			set(layer_i.html, %3);
+			<!--
+			layer_i.loadstyle(videoControlBar_menuitem_base|videoControlBar_menuitem_normal);
+			-->
+		);
+		delete(caption, name_i, layer_i);
+	</action>
+
+
+	<action name="videoControlBar_selectmenuitem">
+		set(name_i, 'videoControlBar_%1_menuitem_%2');
+		copy(layer_i, layer[get(name_i)]);
+		if(layer_i,
+			if(%3 !== false,
+				layer_i.loadstyle(videoControlBar_menuitem_selected);
+			,
+				layer_i.loadstyle(videoControlBar_menuitem_normal);
+			);
+		);
+		delete(name_i);
+	</action>
+
+
+	<action name="videoControlBar_deselectmenuitem">
+		videoControlBar_selectmenuitem(%1, %2, false);
+	</action>
+
+
+	<action name="videoControlBar_toggle_viewmenu">
+		if(layer[videoControlBar_viewmenu_menu].state == 'closed',
+			if(layer[videoControlBar_qualitymenu_menu].state == 'opened', videoControlBar_hidemenu(qualitymenu) );
+			videoControlBar_showmenu(viewmenu);
+		,
+			videoControlBar_hidemenu(viewmenu);
+		);
+	</action>
+
+
+	<action name="videoControlBar_update_viewmenu">
+		resolvecondition(issour, %1 == sour);
+		resolvecondition(isrect, %1 == rect);
+		videoControlBar_selectmenuitem(viewmenu, sour, get(issour));
+		videoControlBar_selectmenuitem(viewmenu, rect, get(isrect));
+		delete(issour, isrect);
+		videoControlBar_hidemenu(viewmenu);
+	</action>
+
+
+	<action name="videoControlBar_source_view">
+		videoControlBar_update_viewmenu(sour);
+		
+		setViewSource();
+	</action>
+
+
+<action name="setViewSource">
+	if(normalViewActivated,stopSetViewTweens(););
+	setViewSourceComplete();
+</action>
+
+<action name="setViewSourceComplete">
+	if(current_view_isflat !== true,
+		set(current_view_isflat, true);
+		stoptween(view.fov);
+		mod(view.hlookat, 360);
+		set(view.limitview, off);
+		set(view.maxpixelzoom, 0);
+		copy(video_controlbar_backup_fovmin, view.fovmin);
+		copy(video_controlbar_backup_fov, view.fov);
+		set(view.fovmin, 0.01);
+		set(control.usercontrol, off);
+
+		copy(current_fov, view.fov);
+		remapfovtype(current_fov, get(view.fovtype), HFOV);
+		set(view.fovtype, HFOV);
+		copy(view.fov, current_fov);
+		copy(startfov, current_fov);
+
+		copy(image_hfov, image.hfov);
+		tween(image_hfov, 1.0, 3.0, linear,
+			set(control.usercontrol,all);
+			set(view.fovmin, 0.25);
+			set(view.hlookatmin, -2);
+			set(view.hlookatmax, +2);
+			set(view.vlookatmin, -1);
+			set(view.vlookatmax, +1);
+			set(view.limitview, range);
+		,
+			if(image_hfov LT 90,
+				mul(view.fov, image_hfov, 1.1);
+			,
+				sub(hr, image_hfov, 90);
+				div(hr, 270);
+				sub(hr2, 1, hr);
+				mul(a, startfov, hr);
+				mul(b, 99, hr2);
+				add(view.fov, a,b);
+			);
+			copy(image.hfov, image_hfov);
+			set(image.vfov, 0);
+			set(view.pannini, 0.0);
+			updateobject(true, true);
+		);
+
+		adjusthlookat(0);
+		tween(view.hlookat, 0, 1.5);
+		tween(view.vlookat, 0, 1.5);
+	);
+</action>
+
+
+<action name="setViewNonFlat">
+	if(current_view_isflat === true,
+		set(current_view_isflat, false);
+		set(view.limitview, off);
+		set(control.usercontrol, all);
+
+		copy(current_fov, view.fov);
+		remapfovtype(current_fov, get(view.fovtype), %1);
+		set(view.fovtype, %1);
+		copy(view.fov, current_fov);
+		copy(image_hfov, image.hfov);
+
+		if(view.fovtype == VFOV,
+			if(scene[get(xml.scene)].planar,
+				set(view.limitview, fullrange);
+			,
+				set(view.limitview, range);
+				set(view.hlookatmin, get(panoview.hmin));
+				set(view.hlookatmax, get(panoview.hmax));
+				set(view.vlookatmin, get(panoview.vmin));
+				set(view.vlookatmax, get(panoview.vmax));
+			);
+		);
+	
+		tween(image_hfov, 360.0, 3.0, linear,
+			copy(view.fovmin, video_controlbar_backup_fovmin);
+			if(view.fovtype != VFOV,
+				if(scene[get(xml.scene)].planar,
+					set(view.limitview, fullrange);
+				,
+					set(view.limitview, range);
+					set(view.hlookatmin, get(panoview.hmin));
+					set(view.hlookatmax, get(panoview.hmax));
+					set(view.vlookatmin, get(panoview.vmin));
+					set(view.vlookatmax, get(panoview.vmax));
+				);
+			);
+		,
+			copy(image.hfov, image_hfov);
+			set(image.vfov, 0);
+			updateobject(true, true);
+		);
+	,
+		copy(current_fov, view.fov);
+		remapfovtype(current_fov, get(view.fovtype), %1);
+		set(view.fovtype, %1);
+		copy(view.fov, current_fov);
+	);
+
+	if(view.vlookat LT -60 OR view.vlookat GT +60,
+		tween(view.vlookat, 0.0, 0.30, easeInOutSine);
+	);
+</action>
+
+
+
+	<action name="videoControlBar_rectilinear_view">
+		videoControlBar_update_viewmenu(rect);setViewNormal();
+
+	</action>
+
+
+
+
+
+
+
+
+
+	<action name="videoControlBar_toggle_qualitymenu">
+		if(layer[videoControlBar_qualitymenu_menu].state == 'closed',
+			if(layer[videoControlBar_viewmenu_menu].state == 'opened', videoControlBar_hidemenu(viewmenu) );
+			videoControlBar_showmenu(qualitymenu);
+		,
+			videoControlBar_hidemenu(qualitymenu);
+		);
+	</action>
+
+
+	<action name="videoControlBar_showmenu">
+		set(layer[videoControlBar_%1_menu].state, 'opened');
+		set(layer[videoControlBar_%1_window].visible, true);
+		delayedcall(videoControlBar_view_stop, 4.0, videoControlBar_hidemenu(viewmenu););
+		delayedcall(videoControlBar_quality_stop, 4.0, videoControlBar_hidemenu(qualitymenu););
+	</action>
+
+
+	<action name="videoControlBar_hidemenu">
+		stopdelayedcall(videoControlBar_view_stop);
+		stopdelayedcall(videoControlBar_quality_stop);
+		set(layer[videoControlBar_%1_menu].state, 'closed');
+		set(layer[videoControlBar_%1_window].visible, false);
+	</action>
+
+
+	<style name="videoControlBar_baseimage" url="%FIRSTXML%/graphics/videocontrolbar/videointerface_skin_kolor.png" />
+	<style name="videoControlBar_qualityimage" url="%FIRSTXML%/graphics/videocontrolbar/quality_skin_kolor.png" />
+
+
+	<style name="videoControlBar_timertxt_base" type="text" align="bottomleft" vcenter="true" 
+		height="30" padding="0" bg="false" capture="false" enabled="false" bgborder="0" 
+		css="text-align:left;color:#ffffff;font-family:Arial;font-size:16px;" />
+
+	<style name="videoControlBar_tooltiptxt_base" type="text" align="bottomleft" vcenter="true" 
+		height="14" padding="0 2" roundedge="2" 
+		 bg="true" bgcolor="0xeeeeee" bgalpha="1"
+		 bgborder="0"
+		
+		capture="false" enabled="false" 
+		css="text-align:left;color:#000000;font-family:Arial;font-weight:bold;font-size:11px;" />
+
+
+
+	<style name="videoControlBar_titletxt_base" type="text" align="topleft" vcenter="true" wordwrap="false"  
+		height="30" padding="0" bg="false" capture="false" enabled="true" bgborder="0" 
+		css="text-align:left;color:#ffffff;font-family:Arial;font-size:14px;" 
+		/>
+
+
+	<style name="videoControlBar_menutxt_base" type="text" align="bottomright" x="0" vcenter="true" 
+		height="30" padding="0 0 0 5" bg="false" border="false" 
+		onover="loadstyle(videoControlBar_menutxt_over);" onout="loadstyle(videoControlBar_menutxt_normal);" 
+		ondown.touch="onover();" onup.touch="onout();" />
+	<style name="videoControlBar_menutxt_normal" enabled="true" alpha="1.0" 
+		css="text-align:right; color:#ffffff;font-family:Arial;font-size:16px;" />
+	<style name="videoControlBar_menutxt_over" enabled="true" alpha="1.0" 
+		css="text-align:right; color:#ff6600;font-family:Arial;font-size:16px;" />
+	<style name="videoControlBar_menuitem_base" type="text" align="lefttop" x="0" vcenter="true" 
+		width="138" height="26" padding="0 3" bg="false" bgcolor="0xff6600" bgalpha="1.0" bgborder="0" 
+		onover="set(bg,true);" onout="set(bg,false);" ondown.touch="onover();" onup.touch="onout();" />
+	<style name="videoControlBar_menuitem_normal" txtshadow="" enabled="true" alpha="1.0" 
+		css="text-align:left; color:#ffffff;font-family:Arial;font-size:16px;" />
+	<style name="videoControlBar_menuitem_selected" txtshadow="0.01 0.01 4.0 0x000000 1.0" enabled="true" alpha="1.0" 
+		css="text-align:left; color:#ff6600;font-family:Arial;font-size:16px;" />
+
+
+	<action name="videoControlBar_changequality_pos">
+		set(layer[videoControlBar_quality_button].x, get(layer[videoControlBar_quality_button_txt].width));
+		set(layer[videoControlBar_quality].width, get(layer[videoControlBar_quality_button_txt].width));
+		add(layer[videoControlBar_quality].width, 15);
+	</action>
+	<action name="videoControlBar_changequality_txt">
+		set(layer[videoControlBar_quality_button_txt].html, %1);
+	</action>
+
+	<action name="videoControlBar_changetotaltime_pos">
+		set(layer[videoControlBar_timer_total].x, get(layer[videoControlBar_timer].width));
+		add(layer[videoControlBar_timer_total].x, get(layer[videoControlBar_timer_total].baseposx));
+	</action>
+
+
+
+	<style name="videoControlBar_over"
+		ondown="videoControlBar_buttonover(get(name));"
+		onhover="videoControlBar_btntooltip_show();"
+		onover="videoControlBar_buttonover(get(name));"
+		onout="videoControlBar_buttonover(null);videoControlBar_btntooltip_hide();"
+		/>
+	<action name="videoControlBar_buttonover">
+		set(skin_newover_bt, %1);
+		set(skin_newover_part2, '');
+
+		indexoftxt(skin_overpos1, get(crop), '|');
+		subtxt(skin_over_part1, get(crop), 0, get(skin_overpos1));
+		inc(skin_overpos1);
+		subtxt(skin_over1, get(crop), get(skin_overpos1), 8);
+		indexoftxt(skin_overpos2, get(skin_over1), '|');
+		subtxt(skin_newover_part2, get(skin_over1), 0, 2);
+		txtreplace(skin_newover_part2, '|', '');
+		inc(skin_overpos2);
+		subtxt(skin_over2, get(skin_over1), get(skin_overpos2), 8);
+
+		if(%1 != null,
+			txtadd(skin_newover, get(skin_over_part1), '|30|', get(skin_over2));
+		,
+			txtadd(skin_newover, get(skin_over_part1), '|0|', get(skin_over2));
+		);
+		set(crop, get(skin_newover));
+		delete(skin_newover, skin_over_part1, skin_over2, skin_over1, skin_overpos2, skin_overpos1);
+	</action>
+
+
+	<action name="videoControlBar_format_sec_to_hhmmss">
+		copy(t,%1);
+		div(hh,get(t),3600);
+		Math.floor(hh);
+		roundval(hh);
+		div(mm,t,60);
+		mod(mm,60);
+		Math.floor(mm);
+		roundval(mm);
+		copy(ss,t);
+		mod(ss,60);
+		Math.floor(ss);
+		roundval(ss);
+		if(hh GT 0, if(mm LT 10, txtadd(mm, '0', get(mm)); ); );
+		if(ss LT 10, txtadd(ss, '0', get(ss)); );
+		txtadd(ft, get(mm),':',get(ss));
+		if(hh GT 0, txtadd(ft,get(hh),':',get(ft)); );
+		if(%3 == true, txtadd(ft,'&#x00A0;/&#x00A0;',get(ft)); );
+		copy(%2,ft);
+	</action>
+
+
+<action name="videoControlBar_apply_timer">
+	videoControlBar_format_sec_to_hhmmss(%1, layer[videoControlBar_timer].html, false);
+	videoControlBar_format_sec_to_hhmmss(%2, layer[videoControlBar_timer_total].html, true);
+
+	copy(layer[videoControlBar_loader].width, %3);
+	copy(layer[videoControlBar_time].width, %4);
+</action>
+
+
+	<action name="videoControlBar_setup_video_quality">
+		set(videoControlBar_quality_counter, 0);
+		getmessage(quality_caption_high, videoControlBarquality_high_tip);
+		videoControlBar_addmenuitem(qualitymenu, q1, get(quality_caption_high), videoControlBar_change_video_file(q1, get(quality_caption_high), get(scene[get(xml.scene)].scenevideourl), get(scene[get(xml.scene)].scenevideoposterurl), 'high'); );
+		inc(videoControlBar_quality_counter);
+		if(scene[get(xml.scene)].scenevideolowresurl != '',
+			getmessage(quality_caption_low, videoControlBarquality_low_tip);
+			videoControlBar_addmenuitem(qualitymenu, q2,  get(quality_caption_low), videoControlBar_change_video_file(q2, get(quality_caption_low), get(scene[get(xml.scene)].scenevideolowresurl), get(scene[get(xml.scene)].scenevideolowresposterurl), 'low'); ); 
+			inc(videoControlBar_quality_counter);
+		);
+		
+		if(videoControlBar_quality_counter GT 1,
+
+			if(scene[get(xml.scene)].scenevideolowresurl != '' AND (device.html5 AND (device.mobile OR device.tablet OR device.safari)) AND scene[get(xml.scene)].name != plugin[get(videointerface_video)].current_videoscene_name,
+				set(videoControlBar_current_videoscene_quality, 'low');
+			);
+			if(videoControlBar_current_videoscene_quality == 'low',
+				videoControlBar_selectmenuitem(qualitymenu, q2);
+				videoControlBar_changequality_txt(get(quality_caption_low));
+			,
+				videoControlBar_selectmenuitem(qualitymenu, q1);
+				videoControlBar_changequality_txt(get(quality_caption_high));
+			);
+		,
+			set(layer[videoControlBar_quality].visible, false);
+		);
+	</action>
+
+
+	<action name="videoControlBar_change_video_file">
+		plugin[get(videointerface_video)].playvideo(%3, %4, get(plugin[get(videointerface_video)].ispaused), get(plugin[get(videointerface_video)].time));
+		videoControlBar_deselectmenuitem(qualitymenu, q1);
+		videoControlBar_deselectmenuitem(qualitymenu, q2);
+		videoControlBar_selectmenuitem(qualitymenu, %1);
+		set(videoControlBar_current_videoscene_quality, %5);
+		videoControlBar_hidemenu(qualitymenu);
+		videoControlBar_changequality_txt(%2);
+	</action>
+
+
+	<action name="videoControlBar_togglepause">
+		videoControlBar_hidemenu(viewmenu);
+		videoControlBar_hidemenu(qualitymenu);videointerface_togglepause();
+	</action>
+
+
+	<action name="videoControlBar_update_pausestate">
+		if(plugin[get(videointerface_video)].ispaused,
+			set(layer[videoControlBar_pp_button].tooltip, 'videoControlBarplay_tip');
+			if(skin_newover_bt == 'videoControlBar_pp_button',
+				txtadd(newcrop, '0|',get(skin_newover_part2),'|30|30');
+				set(layer[videoControlBar_pp_button].crop, get(newcrop));
+			,
+				set(layer[videoControlBar_pp_button].crop, 0|0|30|30);
+			);
+		,
+			set(layer[videoControlBar_pp_button].tooltip, 'videoControlBarpause_tip');
+			if(skin_newover_bt == 'videoControlBar_pp_button',
+				txtadd(newcrop, '30|',get(skin_newover_part2),'|30|30');
+				set(layer[videoControlBar_pp_button].crop, get(newcrop));
+			,
+				set(layer[videoControlBar_pp_button].crop, 30|0|30|30);
+			);
+			if(layer[videoControlBar_splashscreen_image].visible,
+				tween(layer[videoControlBar_splashscreen_image].alpha, 0.0, 0.25, default, 
+					set(layer[videoControlBar_splashscreen_image].visible,false);
+				);
+			);
+		);
+		layer[videoControlBar_pp_button].onout();
+		layer[videoControlBar_pp_button].onover();
+	</action>
+
+
+	<action name="videoControlBar_togglesound">
+		videoControlBar_hidemenu(viewmenu);
+		videoControlBar_hidemenu(qualitymenu);
+		videoControlBar_update_soundstate();
+	</action>
+
+
+	<action name="videoControlBar_update_soundstate">
+		set(newcrop, '');
+		set(snd_iconpos, 210);
+
+		if(plugin[get(videointerface_video)].volume GT 0,
+			if(plugin[get(videointerface_video)].volume LT 0.4,
+				set(snd_iconpos, 180);
+				add(plugin[get(videointerface_video)].volume, 0.33);
+				set(layer[videoControlBar_snd_button].tooltip, 'videoControlBarsound_high_tip');
+			,
+				if(plugin[get(videointerface_video)].volume LT 0.7,
+					add(plugin[get(videointerface_video)].volume, 0.33);
+					set(layer[videoControlBar_snd_button].tooltip, 'videoControlBarsound_mute_tip');
+				,
+					set(snd_iconpos, 120);
+					set(plugin[get(videointerface_video)].volume, 0);
+					set(layer[videoControlBar_snd_button].tooltip, 'videoControlBarsound_low_tip');
+				);
+			);
+
+			if(skin_newover_bt == 'videoControlBar_snd_button',
+				txtadd(newcrop, get(snd_iconpos),'|',get(skin_newover_part2),'|30|30');
+				set(layer[videoControlBar_snd_button].crop, get(newcrop));
+			,
+				txtadd(newcrop, get(snd_iconpos),'|0|30|30');
+				set(layer[videoControlBar_snd_button].crop, get(newcrop));
+			);
+
+		,
+			if(skin_newover_bt == 'videoControlBar_snd_button',
+				txtadd(newcrop, '150|',get(skin_newover_part2),'|30|30');
+				set(layer[videoControlBar_snd_button].crop, get(newcrop));
+			,
+				set(layer[videoControlBar_snd_button].crop, 150|0|30|30);
+			);
+			set(plugin[get(videointerface_video)].volume, 0.33);
+			set(layer[videoControlBar_snd_button].tooltip, 'videoControlBarsound_medium_tip');
+		);
+		layer[videoControlBar_snd_button].onout();
+		layer[videoControlBar_snd_button].onover();
+		delete(newcrop, snd_iconpos);
+	</action>
+
+<!-- ********** -->
+<!-- kids -->
+<!-- id : title -->
+<!-- ********** -->
+
+  <events name="title_events" 
+    onTourStart="showtitle();"
+    hidetourcontrols="hidetitle();" 
+    showtourcontrols="showtitle();" 
+    changetourlanguage="changeLanguagetitle"
+    keep="true" />
+
+  <action name="hidetitle">set(layer[title].visible, false);</action>
+  <action name="showtitle">set(layer[title].visible, true );</action>
+
+  <action name="changeLanguagetitle">
+    getmessage(layer[title].html,get(projecttitleid));
+    escape(layer[title].html);
+  </action>
+
+  <layer name="title" keep="true" zorder="5"
+         type="text"
+         align="bottomleft" x="0" y="20"
+         onloaded="getmessage(html,get(projecttitleid));escape(html);"
+         bg="false"
+         bgborder="0"
+         alpha="1"
+         visible="false"
+         capture="false" handcursor="false" enabled="false"
+         interactivecontent="false" 
+         css="text-align:left;
+              color:#ffffff;
+              font-family:Baron Neue;
+              font-size:24px;"/>
+
+<!-- ********** -->
+<!-- Descripción -->
+<!-- id : description -->
+<!-- ********** -->
+
+<ptplugin name="description" canStart="false" newPano="false" openatstart="false" mode="panorama" startMethod="showDescription_description" engine="kolorArea">
+	<settings>
+		<option name="position" value="right" type="string" />
+		<option name="start_position" value="left" type="string" />
+		<option name="margin_x" value="0" type="int" />
+		<option name="margin_y" value="0" type="int" />
+		<option name="background_color" value="f2f2f2" type="string" />
+		<option name="background_alpha" value="1" type="float" />
+		<option name="topleft_radius" value="0" type="int" />
+		<option name="topright_radius" value="0" type="int" />
+		<option name="bottomleft_radius" value="0" type="int" />
+		<option name="bottomright_radius" value="0" type="int" />
+		<option name="area_border_width" value="0" type="int" />
+		<option name="area_border_color" value="f2f2f2" type="string" />
+		<option name="area_border_alpha" value="1" type="float" />
+		<option name="padding" value="15" type="int" />
+		<option name="display_title" value="false" type="bool" />
+		<option name="close_displayed" value="false" type="bool" />
+		<option name="close_text" value="descriptiondisplay_close_text" type="string" />
+
+		<option name="overlay_displayed" value="false" type="bool" />
+		<option name="overlay_color" value="000000" type="string" />
+		<option name="overlay_alpha" value="0.50000762951094835" type="float" />
+
+		<option name="area_width" value="20" type="int" />
+		<option name="area_height" value="50" type="int" />
+		<option name="area_width_unit" value="percent" type="string" />
+		<option name="area_height_unit" value="percent" type="string" />
+		<option name="animation" value="true" type="bool" />
+		<option name="animation_duration" value="500" type="int" />
+		<option name="refresh_content" value="true" type="bool" />
+		<option name="close_callback" value="invokeKrFunction('closeKolorAreaCallback_description')" type="string" />
+		<option name="close_on_click" value="true" type="bool" />
+		<option name="close_onclick_callback" value="invokeKrFunction('closeKolorAreaCallbackClick_description')" type="string" />
+		<option name="zorder" value="6" type="int" />
+		<option name="use_i18n" value="true" type="bool" />
+	</settings>
+</ptplugin>
+
+<action name="kolorAreaJsReady_description">
+	set(ptplugin[description].jsready, true);
+
+</action>
+
+
+<action name="openKolorArea_description">
+	ifnot(ptplugin[description].isOpen,
+		set(ptplugin[description].isOpen, true);
+		pauseautorotation(forceplugin);
+
+		js(showKolorArea(description, get(ptplugin[description].descID)));
+		events.dispatch(onremovedisplayedobject);
+	);
+</action>
+
+<action name="closeKolorArea_description">
+	if(ptplugin[description].isOpen,
+		js(invokePluginFunction(description, closeKolorArea));
+	);
+</action>
+
+<action name="toggleKolorArea_description">
+	if(ptplugin[description].isOpen,
+		closeKolorArea_description();
+	,
+		openKolorArea_description();
+	);
+</action>
+
+<action name="closeKolorAreaCallback_description">
+	if(ptplugin[description].isOpen,resumeautorotation(forceplugin);
+
+		
+	);
+	set(ptplugin[description].isOpen, false);
+	if(tour_displayinfo,hideTourInfo();
+
+	);
+</action>
+
+<action name="closeKolorAreaCallbackClick_description">
+
+
+	if(tour_displayinfo,hideTourInfo();
+
+	);
+</action>
+
+
+<action name="showKolorArea_description">
+	ifnot(ptplugin[description].startMethod == "",
+		delayedcall(0,get(ptplugin[description].startMethod));
+	,
+		set(ptplugin[description].isOpen, true);
+		pauseautorotation(forceplugin);
+
+		js(invokePluginFunction(description, showKolorArea, %1));
+		events.dispatch(onremovedisplayedobject);
+	);
+</action>
+	
+<action name="hideKolorArea_description">
+	resumeautorotation(forceplugin);
+
+	
+	set(ptplugin[description].isOpen, false);
+	js(invokePluginFunction(description, hideKolorArea, %1));
+</action>
+
+<action name="openDescription_description">
+	openKolorArea_description();
+</action>
+
+<action name="openSpotDescription_description">
+	set(ptplugin[description].descID, %1);
+	openKolorArea_description();
+</action>
+
+<action name="closeDescription_description">
+	set(ptplugin[description].currentGroup, false);
+	if(%1,
+		set(restore_description, true);
+	,
+		set(restore_description, false);
+	);
+	closeKolorArea_description();
+</action> 
+
+<action name="showDescription_description">
+	if(ptplugin[description].canStart,
+		set(ptplugin[description].descID, get(scene[get(xml.scene)].descriptionid));
+		if(ptplugin[description].descID == null,
+			set(ptplugin[description].descID, "");
+		);
+		if(ptplugin[description].descID != "",
+			openDescription_description();
+		,
+			hideKolorArea_description(false);
+		);
+		set(ptplugin[description].startMethod, "");
+	);
+</action>
+
+
+<action name="refreshPanoDescription_description">
+	set(ptplugin[description].descID, get(scene[get(xml.scene)].descriptionid));
+	if(ptplugin[description].descID == null,
+		set(ptplugin[description].descID, "");
+	);
+	if(ptplugin[description].descID != "",
+		if(ptplugin[description].isOpen,
+			js(invokePluginFunction(description, updateKolorArea, get(ptplugin[description].descID)));
+		,
+			if(restore_description,
+				showDescription_description();
+			);
+		);
+	,
+		if(tour_displayinfo,
+			delayedcall(0.1,showTourInfo();
+);
+		);
+		closeDescription_description(get(ptplugin[description].isOpen));
+	);
+</action>
+
+<action name="onNewPano_description">
+	if(ptplugin[description].newPano,
+		if(ptplugin[description].startMethod == "",
+			if(ptplugin[description].isOpen,
+				refreshPanoDescription_description();
+			,
+				if(tour_displayinfo,
+				showDescription_description();
+				,
+				refreshPanoDescription_description();
+				);
+			);
+		);
+	);
+	set(ptplugin[description].newPano, true);
+</action>
+
+<action name="changeLanguage_description">
+	if(ptplugin[description].jsready,
+		stopdelayedcall(delay_description);
+		js(invokePluginFunction(description, changeLanguage, true));
+	,
+		delayedcall(delay_description, 0.1, changeLanguage_description(););
+	);
+</action>
+
+<events name="kolorAreaEvents_description" 
+	keep="true"
+	onTourStart="set(ptplugin[description].canStart, true);if(ptplugin[description].openatstart,showTourInfo();
+);"
+	onshowtourinfo="if(tour_displayinfo,showDescription_description(););"
+	onhidetourinfo="if(ptplugin[description].isOpen,closeDescription_description(false););"
+	onnewpano="onNewPano_description();"
+	changetourlanguage="changeLanguage_description();"
+/>
+
+<!-- ********* -->
+<!-- Gyroscope -->
+<!-- ********* -->
+
+
+<plugin name="gyroscope"
+        url="%FIRSTXML%/graphics/gyro2.js"
+        keep="true"
+        devices="no-desktop.and.html5"
+
+        onunavailable="checkGyroUnavailable();"
+        sensor_mode="1"
+        friction="auto"
+        autocalibration="true"
+        touch_mode="full"
+        onavailable="delayedcall(1, checkGyroAvailability(););"
+        enabled="false"
+        activated="false"
+        />
+
+<events name="gyroscopeEvents" onnewpano="planarGyroscopeTest();" keep="true" />
+
+<action name="planarGyroscopeTest">
+  if(plugin[gyroscope],
+    if(scene[get(xml.scene)].full360,
+      set(sceneisfull360, false);
+      sub(viewhfov, panoview.hmax, panoview.hmin);
+      if (viewhfov == 360,
+        sub(viewvfov, panoview.vmax, panoview.vmin);
+        if (viewvfov == 180,
+          set(sceneisfull360, true);
+        );
+      );
+      if (sceneisfull360,
+        set(plugin[gyroscope].camroll, true);
+      ,
+        set(plugin[gyroscope].camroll, false);
+      );
+    ,
+      set(plugin[gyroscope].camroll, false);
+    );
+  );
+</action>
+
+<action name="changeGyroscopeState">
+  if(plugin[gyroscope],
+    if (plugin[gyroscope].isavailable,
+      if(%1,
+        set(plugin[gyroscope].activated,true);
+      ,
+        set(plugin[gyroscope].activated,false);
+      );
+      if (%1 != plugin[gyroscope].enabled,
+        if(plugin[gyroscope].activated,
+          switch(plugin[gyroscope].enabled);
+        ,
+          set(plugin[gyroscope].enabled, false);
+        );
+        if (plugin[gyroscope].enabled, events.dispatch(ongyroscopeon);, events.dispatch(ongyroscopeoff););
+      );
+    );
+  );
+</action>
+
+<action name="checkGyroAvailability">
+  if(plugin[gyroscope],
+    if (plugin[gyroscope].isavailable,
+      
+      set(sceneisfull360, false);
+      if (scene[get(xml.scene)].full360,
+        sub(viewhfov, panoview.hmax, panoview.hmin);
+        if (viewhfov == 360,
+          sub(viewvfov, panoview.vmax, panoview.vmin);
+          if (viewvfov == 180,
+            set(sceneisfull360, true);
+          );
+        );
+      );
+      set(delaythegyrocheck, false);
+      if (sceneisfull360 AND tour_firstlittleplanet, set(delaythegyrocheck, true));
+
+      ifnot(delaythegyrocheck,
+        switch(plugin[gyroscope].enabled);
+        set(plugin[gyroscope].activated,true);
+        set(tour_gyroscopedevices, true);
+        events.dispatch(ongyroscopeavailable);
+      ,
+        delayedcall(1, checkGyroAvailability(););
+      );
+    ,
+      set(tour_gyroscopedevices, false);
+    );
+    if (plugin[gyroscope].enabled, events.dispatch(ongyroscopeon);, events.dispatch(ongyroscopeoff););
+  ,
+    checkGyroUnavailable();
+  );
+</action>
+
+<action name="checkGyroUnavailable">
+  set(plugin[gyroscope].activated, false);
+  set(plugin[gyroscope].enabled, false);
+  set(tour_gyroscopedevices, false);
+  events.dispatch(ongyroscopeunavailable);
+</action>
+
+
+  <events name="Bootstrap_External_Commandsevents" onnewpano="Bootstrap_External_Commandsonp();" keep="true"/>
+  <action name="Bootstrap_External_Commandsonp">
+  	js(updatePanorama(get(xml.scene)););
+  </action>
+
+  <action name="enableGyroscope">
+    changeGyroscopeState(true);
+  </action>
+  <action name="disableGyroscope">
+    changeGyroscopeState(false);
+  </action>
+
+
+  <!-- Tour Information -->
+  <action name="hideTourInfo">set(tour_displayinfo, false);events.dispatch(onhidetourinfo);</action>
+  <action name="showTourInfo">set(tour_displayinfo, true); events.dispatch(onshowtourinfo);</action>
+
+
+  <!-- Fullscreen Management -->
+  <action name="exitFullScreen" devices="fullscreensupport">set(tour_fullscreen,false);js(setFullscreen(false));</action>
+  <action name="enterFullScreen" devices="fullscreensupport">set(tour_fullscreen,true);js(setFullscreen(true));</action>
+  <action name="switchFullScreen">if(tour_fullscreen,exitFullScreen();,enterFullScreen(););</action>
+
+  
+  <events name="krpanoExitFullscreenEvent"
+    onexitfullscreen="if(tour_fullscreen,exitFullScreenChangeEvent(););"
+    keep="true" />
+
+  <action name="exitFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,false);events.dispatch(onexitfullscreen);</action>
+  <action name="enterFullScreenChangeEvent" devices="fullscreensupport">set(tour_fullscreen,true);events.dispatch(onenterfullscreen);</action>
+  <action name="exitFullScreenFallback">set(fullscreen,false);</action>
+  <action name="enterFullScreenFallback">set(fullscreen,true);</action>
+  
+  <action name="resizeFullScreenEvent">delayedcall(0,updatescreen(););</action>
+
+  <!-- Hide / Show Controls -->
+  <action name="hideTourControls">set(tour_displaycontrols, false);events.dispatch(hidetourcontrols);</action>
+  <action name="showTourControls">set(tour_displaycontrols, true); events.dispatch(showtourcontrols);</action>
+
+
+	<!-- WebVR plugin for VR availability tests -->
+
+	<plugin name="ptpvrmode" devices="html5" keep="true"
+		url="%FIRSTXML%/graphics/webvr.js"
+		mobilevr_support="true"
+		mobilevr_fake_support="true"
+		vr_cursor=""
+		vr_cursor_enabled="false"
+		onavailable="delayedcall(1, checkVrAvailability(););"
+		onunavailable="checkVrUnavailable();"
+		/>
+	<action name="checkVrAvailability">
+		if(plugin[ptpvrmode],
+			if (plugin[ptpvrmode].isavailable,
+				set(tour_vrdevices, true);
+				events.dispatch(onvravailable);
+			,
+				set(tour_vrdevices, false);
+			);
+		,
+			checkVrUnavailable();
+		);
+	</action>
+	<action name="checkVrUnavailable">
+		set(tour_vrdevices, false);
+		events.dispatch(onvrunavailable);
+	</action>
+<action name="setViewNormal">
+	stopSetViewTweens();
+	if(current_view_isflat === true,
+		setViewNonFlat(VFOV);
+	);
+	setViewNormalComplete();
+</action>
+
+<action name="setViewNormalComplete">
+	set(view.fisheyefovlink, 0.5);
+	set(view.fovmax, get(panoview.fovmax));
+	tween(view.architectural, 0.0, distance(1.0, 0.45));
+	tween(view.pannini, 0.0, distance(1.0, 0.45), easeOutQuad, if(panniniViewActivated,restoreViewFromPannini();););
+	tween(view.vlookat, get(panoview.v), distance(90, 0.45));
+	tween(view.fov, get(panoview.fov), distance(50, 0.45));
+	tween(view.fisheye, 0.0, distance(1.0, 0.45),
+		set(view.stereographic,false);
+	);
+</action>
+
+<krpano normalViewActivated="true" />
+<action name="stopSetViewTweens">
+	stoptween(view.fov);
+	stoptween(view.vlookat);
+	stoptween(view.fisheye);
+	stoptween(view.architectural);
+	stoptween(view.pannini);
+</action>
+
+  <!-- Sounds Management -->
+  <plugin name="soundinterface"
+          preload="true"
+          url.html5="%FIRSTXML%/graphics/soundinterface.js"
+          rootpath="%$videos_sounds_path%/sounds"
+          backgroundsound=""
+          backgroundsoundloops="0"
+          bgsound="false"
+          bgsoundpaused="false"
+          bgsoundloopended="false"
+          bgsoundtoforce = "false"
+          volumeinitialized="false"
+          started="true"
+          keep="true"/>
+  <events name="soundmanagementevents"
+          onnewpano="if(plugin[soundinterface].started,playbackgroundsound(););"
+          onxmlcomplete="soundinterfaceonxmlcomplete();"
+          keep="true"/>
+  <action name="soundinterfaceonxmlcomplete">
+    ifnot(plugin[soundinterface].volumeinitialized,
+      div(plugin[soundinterface].volume, tour_soundsvolume, 100);
+      set(plugin[soundinterface].volumeinitialized,true);
+    );
+  </action>
+  <action name="playsound3Dwhenpossible">
+    set(really_play_sound, true);
+    if (tour_current_played_sound,
+      if (%1 == tour_current_played_sound,
+        delete(tour_current_played_sound);
+        set(tour_current_played_sound_state, 0);
+        delete(tour_current_played_sound_paused);
+        stopsound(%1);
+        set(really_play_sound, false);
+        if(%4,
+          delete(tour_current_played_sound_pausesound);
+          resumeTourSoundsActions(true,true,true,true,true);
+        );
+      );
+    );
+    if (really_play_sound,
+      if (tour_current_played_sound,
+        stopsound(get(tour_current_played_sound));
+
+        ifnot(%4,
+          if(tour_current_played_sound_pausesound,
+            delete(tour_current_played_sound_pausesound);
+            resumeTourSoundsActions(true,true,true,true,true);
+          );
+        );
+      );
+      if(%4,
+        set(tour_current_played_sound_pausesound, true);
+        pauseTourSoundsActions(true,false,true,true,true);
+      );
+      set(tour_current_played_sound, %1);
+      if(tour_current_played_video,
+        set(tour_current_played_sound_state, 2);
+      ,
+        set(tour_current_played_sound_state, 1);
+      );
+      set(tour_current_played_sound_paused, false);
+      if (%3,
+        if (device.flash,
+          div(volume, tour_soundsvolume, 100);
+          if(%9 != null,
+            playsound3D(%1,%2,%5,%6,%7,get(volume),%8,stopsound3Dwhenpossible(%1,%4));
+          ,
+            playsound3D(%1,%2,%5,%6,%7,get(volume),%8);
+          );
+        ,
+          if(%9 != null,
+            playsound(%1,%2,%8,stopsound3Dwhenpossible(%1,%4));
+          ,
+            playsound(%1,%2,%8);
+          );
+        );
+      ,
+        if(%6 != null,
+          playsound(%1,%2,%5,stopsound3Dwhenpossible(%1,%4));
+        ,
+          playsound(%1,%2,%5);
+        );
+      );
+
+      ifnot(tour_soundson,
+        set(tour_current_played_sound_paused, true);
+        pausesound(%1);
+      );
+    );
+  </action>
+  <action name="stopsound3Dwhenpossible">
+    if (%1 == tour_current_played_sound,
+      delete(tour_current_played_sound);
+      set(tour_current_played_sound_state, 0);
+      delete(tour_current_played_sound_paused);
+
+      ifnot(device.safari,
+        stopsound(%1);
+      );
+      if(%2,
+        delete(tour_current_played_sound_pausesound);
+        resumeTourSoundsActions(true,true,true,true,true);
+      );
+    );
+  </action>
+  <action name="playbackgroundsound">
+  if(playsound,
+    if (xml.scene,
+      if (scene[get(xml.scene)].backgroundsound,
+        if (plugin[soundinterface].backgroundsound != scene[get(xml.scene)].backgroundsound,
+          copy(plugin[soundinterface].backgroundsound, scene[get(xml.scene)].backgroundsound);
+          copy(plugin[soundinterface].backgroundsoundloops, scene[get(xml.scene)].backgroundsoundloops);
+          if (tour_soundson,
+            set(plugin[soundinterface].bgsound, true);
+            set(plugin[soundinterface].bgsoundpaused, false);
+            set(plugin[soundinterface].bgsoundloopended, false);
+            set(plugin[soundinterface].bgsoundtoforce, false);
+            if(scene[get(xml.scene)].video == false OR (scene[get(xml.scene)].video == true AND scene[get(xml.scene)].scenevideomute == true),
+              if(plugin[soundinterface].backgroundsoundloops GT 0,
+                playsound(bgsoundname, get(plugin[soundinterface].backgroundsound), get(plugin[soundinterface].backgroundsoundloops), stopbackgroundsoundoncomplete());
+              ,
+                playsound(bgsoundname, get(plugin[soundinterface].backgroundsound), get(plugin[soundinterface].backgroundsoundloops));
+              );
+            );
+           ,
+            set(plugin[soundinterface].bgsoundtoforce, true);
+            set(plugin[soundinterface].bgsound, false);
+          );
+        ,
+          if (tour_soundson,
+            if((plugin[soundinterface].bgsoundpaused == true AND scene[get(xml.scene)].video == false) OR (scene[get(xml.scene)].video == true AND scene[get(xml.scene)].scenevideomute == true),
+              resumesound(bgsoundname);
+              set(plugin[soundinterface].bgsoundpaused, false);
+            );
+          ,
+            set(plugin[soundinterface].bgsoundtoforce, true);
+            set(plugin[soundinterface].bgsound, false);
+          );
+        );
+      );
+    );
+  ,
+    delayedcall(0.2, playbackgroundsound());
+  );
+  </action>
+  <action name="stopbackgroundsoundoncomplete">
+    if (plugin[soundinterface].backgroundsound,
+    if (plugin[soundinterface].backgroundsoundloops GT 0,
+
+      set(plugin[soundinterface].backgroundsoundloops, 0);
+      set(plugin[soundinterface].bgsound, false);
+      set(plugin[soundinterface].bgsoundpaused, false);
+      set(plugin[soundinterface].bgsoundloopended, true);
+    );
+    );
+  </action>
+  <action name="resetbackgroundsoundifneeded">
+    if (xml.scene,
+      if (scene[get(xml.scene)].backgroundsound != scene[%1].backgroundsound,
+        if(plugin[soundinterface].backgroundsound,
+          stopsound(bgsoundname);
+        );
+        set(plugin[soundinterface].backgroundsound, "");
+        set(plugin[soundinterface].backgroundsoundloops, 0);
+        set(plugin[soundinterface].bgsound, false);
+        set(plugin[soundinterface].bgsoundpaused, false);
+        set(plugin[soundinterface].bgsoundloopended, false);
+      );
+    );
+  </action>
+  <action name="pausebackgroundsound">
+    if(plugin[soundinterface].backgroundsound,
+      if (plugin[soundinterface].bgsound,
+        if(plugin[soundinterface].bgsoundpaused == false AND plugin[soundinterface].bgsoundloopended == false,
+          pausesound(bgsoundname);
+          set(plugin[soundinterface].bgsoundpaused, true);
+        );
+      );
+    );
+    
+  </action>
+  <action name="resumebackgroundsound">
+    set(bgSoundOnResume, true);
+    set(forceBgSoundOnResume, true);
+    if(layer[displayedStandardVideo],
+    if(layer[displayedStandardVideo].pausebgsound AND tour_current_played_video,
+      set(bgSoundOnResume, false);
+      set(forceBgSoundOnResume, false);
+    ););
+    if(layer[webvideodisplay_player],
+    if(layer[webvideodisplay_player].pausebgsound AND tour_current_played_web_video,
+      set(bgSoundOnResume, false);
+      set(forceBgSoundOnResume, false);
+    ););
+    if(tour_current_played_sound_pausesound AND tour_current_played_sound,
+      set(bgSoundOnResume, false);
+    );
+    ifnot(plugin[soundinterface].backgroundsound AND scene[get(xml.scene)].backgroundsound,
+      set(bgSoundOnResume, false);
+    );
+    if(videospots_playing GT 0,
+      set(bgSoundOnResume, false);
+      set(forceBgSoundOnResume, false);
+    );
+    if(bgSoundOnResume,
+      if (plugin[soundinterface].backgroundsound,
+        if (tour_soundson,
+          if (plugin[soundinterface].bgsound AND plugin[soundinterface].bgsoundloopended == false,
+            if((plugin[soundinterface].bgsoundpaused == true AND scene[get(xml.scene)].video == false) OR (scene[get(xml.scene)].video == true AND scene[get(xml.scene)].scenevideomute == true),
+              resumesound(bgsoundname);
+              set(plugin[soundinterface].bgsoundpaused, false);
+            ,
+
+              if(device.mobile OR device.tablet OR device.safari OR device.chrome,
+                resumesound(bgsoundname);
+                set(plugin[soundinterface].bgsoundpaused, false);
+              );
+            );
+          ,
+            if(((plugin[soundinterface].bgsoundpaused == true OR plugin[soundinterface].bgsoundtoforce == true) AND scene[get(xml.scene)].video == false) OR (scene[get(xml.scene)].video == true AND scene[get(xml.scene)].scenevideomute == true),
+              set(plugin[soundinterface].bgsound, true);
+              set(plugin[soundinterface].bgsoundpaused, false);
+              set(plugin[soundinterface].bgsoundloopended, false);
+              set(plugin[soundinterface].bgsoundtoforce, false);
+              if(plugin[soundinterface].backgroundsoundloops GT 0,
+                playsound(bgsoundname, get(plugin[soundinterface].backgroundsound), get(plugin[soundinterface].backgroundsoundloops), stopbackgroundsoundoncomplete());
+              ,
+                playsound(bgsoundname, get(plugin[soundinterface].backgroundsound), get(plugin[soundinterface].backgroundsoundloops));
+              );
+            );
+          );
+        );
+      );
+      
+    ,
+      if(forceBgSoundOnResume,
+        playbackgroundsound();
+        
+      );
+    );
+  </action>
+  <action name="preloadSounds">
+  </action>
+
+  <action name="play3DLocalSounds">
+    if (xml.scene, if (scene[get(xml.scene)].haslocalsounds, playpanolocalsounds();););
+  </action>
+  <action name="stop3DLocalSounds">
+    if (xml.scene, if (scene[get(xml.scene)].haslocalsounds, stoppanolocalsounds();););
+  </action>
+  <action name="resume3DLocalSounds">
+    if (xml.scene, if (scene[get(xml.scene)].haslocalsounds, 
+      set(kill3dSoundOnResume, true);
+      if(layer[displayedStandardVideo],
+      if(layer[displayedStandardVideo].pausebgsound,
+      if(tour_current_played_video,
+        set(kill3dSoundOnResume, false);
+      );););
+      if(layer[webvideodisplay_player],
+      if(layer[webvideodisplay_player].pausebgsound,
+      if(tour_current_played_web_video,
+        set(kill3dSoundOnResume, false);
+      );););
+      if(tour_current_played_sound_pausesound,
+      if(tour_current_played_sound,
+        set(kill3dSoundOnResume, false);
+      ););
+      if(kill3dSoundOnResume,
+        resumepanolocalsounds();
+      );
+    ););
+  </action>
+  <action name="pause3DLocalSounds">
+    if (xml.scene, if (scene[get(xml.scene)].haslocalsounds, pausepanolocalsounds();););
+  </action>
+  <action name="set3DLocalSoundsVolume">
+    if (xml.scene, if (scene[get(xml.scene)].haslocalsounds, setpanolocalsoundsvolume();););
+  </action>
+  <action name="playTourSounds">
+    set(tour_soundson, true);events.dispatch(playtoursoundsevent);
+    resumeTourSoundsActions(true,true,true,true,true);
+  </action>
+  <action name="stopTourSounds">
+    set(tour_soundson, false);events.dispatch(stoptoursoundsevent);
+    pauseTourSoundsActions(true,true,true,true,true);
+  </action>
+  <action name="setTourSoundsVolume">
+    set(tour_soundsvolume, %1);events.dispatch(changetoursoundsevent);
+    div(volume, tour_soundsvolume, 100);
+    set(plugin[soundinterface].volume, get(volume));
+    set3DLocalSoundsVolume();
+  </action>
+  <action name="playTourSoundsActions">
+    if(%1,
+      if(plugin[soundinterface],
+        if(plugin[soundinterface].started,
+        play3DLocalSounds();
+        );
+      );
+    );
+    if(%2,
+      if(plugin[soundinterface],
+        if(plugin[soundinterface].started,
+          resumebackgroundsound();
+        );
+      );
+    );
+  </action>
+  <action name="stopTourSoundsActions">
+    if(%1,
+      stop3DLocalSounds();
+    );
+    if(%2,
+      stopSoundActionsSounds();
+    );
+    if(%3,
+      stopVideoActionsSounds();
+    );
+    if(%4,
+      pausebackgroundsound();
+    );
+  </action>
+  <action name="resumeTourSoundsActions">
+    if(%1,
+      if(plugin[soundinterface],
+        if(plugin[soundinterface].started,
+        resume3DLocalSounds();
+        );
+      );
+    );
+    if(%2,
+      resumeSoundActionsSounds();
+    );
+    if(%3,
+      resumeVideoActionsSounds();
+    );
+    if(%4,
+      if(%5,
+        if(plugin[soundinterface],
+          if(plugin[soundinterface].started,
+            resumebackgroundsound();
+          );
+        );
+      ,
+        pausebackgroundsound();
+      );
+    );
+  </action>
+  <action name="pauseTourSoundsActions">
+    if(%1,
+      pause3DLocalSounds();
+    );
+    if(%2,
+      pauseSoundActionsSounds();
+    );
+    if(%3,
+      pauseVideoActionsSounds();
+    );
+    if(%4,
+      if(%5,
+        pausebackgroundsound();
+      ,
+        if(plugin[soundinterface],
+          if(plugin[soundinterface].started,
+            resumebackgroundsound();
+          );
+        );
+      );
+    );
+  </action>
+  <action name="stopSoundActionsSounds">
+    if (tour_current_played_sound,
+      delete(tour_current_played_sound_paused);
+      stopsound(get(tour_current_played_sound));
+      delete(tour_current_played_sound);
+      set(tour_current_played_sound_state, 0);
+    );
+  </action>
+  <action name="stopVideoActionsSounds">
+    if(tour_current_played_video,
+      if(layer[displayedStandardVideo],
+        layer[displayedStandardVideo].stop();
+        removelayer(displayedStandardVideo);
+        if(layer[displayedStandardVideoOverlayButton], removelayer(displayedStandardVideoOverlayButton); );
+        if(layer[displayedStandardVideoOverlay], removelayer(displayedStandardVideoOverlay); );
+        delete(tour_current_played_video);
+        set(tour_current_played_video_state, 0);
+      );
+    );
+    if(tour_current_played_web_video,
+      displayWebVideoObjectClose();
+    );
+  </action>
+  <action name="resumeSoundActionsSounds">
+    if (tour_current_played_sound,
+      set(resumeSoundActionsVerification, true);
+      if(tour_current_played_video,
+        if(tour_current_played_sound_state LT tour_current_played_video_state,
+          set(resumeSoundActionsVerification, false);
+        );
+      );
+      if(resumeSoundActionsVerification,
+        if (tour_soundson,
+          if(tour_current_played_sound_paused,
+            set(tour_current_played_sound_paused, false);
+            resumesound(get(tour_current_played_sound));
+          ,
+
+            if(device.mobile OR device.tablet OR device.safari OR device.chrome,
+              set(tour_current_played_sound_paused, false);
+              resumesound(get(tour_current_played_sound));
+            );
+          );
+        );
+      );
+    );
+  </action>
+  <action name="resumeVideoActionsSounds">
+    if(tour_current_played_video,
+      set(resumeVideoActionsVerification, true);
+      if(tour_current_played_sound,
+        if(tour_current_played_video_state LT tour_current_played_sound_state,
+          set(resumeVideoActionsVerification, false);
+        );
+      );
+      if(resumeVideoActionsVerification,
+        if (tour_soundson,
+          if(device.flash OR (device.webgl AND !device.ios),
+            div(volume, tour_soundsvolume, 100);
+            set(layer[displayedStandardVideo].volume, get(volume));
+          ,
+            ifnot(device.ios,
+              js(kpanotour.Sounds.startVideosSounds(get(volume)));
+            ,
+              if(tour_soundsvolume GT 0,
+                set(layer[displayedStandardVideo].muted, false);
+              ,
+                set(layer[displayedStandardVideo].muted, true);
+              );
+            );
+          );
+        ,
+          if(device.flash OR (device.webgl AND !device.ios),
+            set(layer[displayedStandardVideo].volume, 0);
+          ,
+            ifnot(device.ios,
+              js(kpanotour.Sounds.stopVideosSounds());
+            ,
+              set(layer[displayedStandardVideo].muted, true);
+            );
+          );
+        );
+      );
+    );
+  </action>
+  <action name="pauseSoundActionsSounds">
+    if (tour_current_played_sound,
+      ifnot(tour_current_played_sound_paused,
+        set(tour_current_played_sound_paused, true);
+        pausesound(get(tour_current_played_sound));
+      );
+    );
+  </action>
+  <action name="pauseVideoActionsSounds">
+    if(tour_current_played_video,
+      if(device.flash OR (device.webgl AND !device.ios),
+        set(layer[displayedStandardVideo].volume, 0);
+      ,
+        ifnot(device.ios,
+          js(kpanotour.Sounds.stopVideosSounds());
+        ,
+          set(layer[displayedStandardVideo].muted, true);
+        );
+      );
+    );
+  </action>
+
+</krpano>

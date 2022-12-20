@@ -1,0 +1,106 @@
+.mytooltip {
+  position: relative;
+  display: inline-block;
+  border-bottom: 1px dotted black;
+}
+.mytooltip .tiptext {
+  display: none;
+  width: 200px;
+  text-align: center;
+  background-color: #565D65;
+  color: rgb(223, 202, 202);
+  text-align: center;
+  border-radius: 3px;
+  padding: 6px 6px;
+  position: absolute;
+  z-index: 10000;
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+}
+.mytooltip .tiptext::after {
+  content: "";
+  position: absolute;
+  border-width: 5px;
+  border-style: solid;
+}
+.mytooltip:hover .tiptext {
+  display: block;
+}
+.centered-txt{
+  text-align: center !important;
+}
+
+
+// tooltip arriba
+.mytooltip.tttop .tiptext{
+  margin-left: -60px;
+  bottom: 100%;
+  left: 50%;
+  text-align: center;
+}
+.mytooltip.tttop .tiptext::after{
+  margin-left: -5px;
+  top: 100%;
+  left: 50%;
+  border-color: #2E2E2E transparent transparent transparent;
+}
+
+// tooltip abajo
+.mytooltip.ttbottom .tiptext{
+  margin-left: -60px;
+  top: 150%;
+  left: 50%;
+  text-align: center;
+}
+.mytooltip.ttbottom .tiptext::after{
+  margin-left: -5px;
+  bottom: 150%;
+  left: 50%;
+  border-color: transparent transparent #2E2E2E transparent;
+}
+
+// flechas
+.flecha{
+  display: none;
+  width:0px;
+  height:0px;
+  border:15px solid transparent;
+  font-size:0px;
+  line-height:0px;
+  z-index: 10000;
+}
+.mytooltip:hover .flecha.down{
+  border-top:25px solid #565D65; /* base flecha y color*/
+}
+.mytooltip:hover .flecha.up{
+  border-bottom:25px solid #565D65; /* base flecha y color*/
+}
+
+
+
+
+// // tooltip derecha
+// .mytooltip.ttright .tiptext{
+//   top: -5px;
+//   left: 120%;
+//   text-align: left;
+// }
+// .mytooltip.ttright .tiptext::after{
+//   margin-top: -5px;
+//   top: 50%;
+//   right: 100%;
+//   border-color: transparent #2E2E2E transparent transparent;
+// }
+
+// // tooltip izquierda
+// .mytooltip.ttleft .tiptext{
+//   top: -5px;
+//   right: 120%;
+//   text-align: right;
+// }
+// .mytooltip.ttleft .tiptext::after{
+//   margin-top: -5px;
+//   top: 50%;
+//   left: 100%;
+//   border-color: transparent transparent transparent #2E2E2E;
+// }
+//

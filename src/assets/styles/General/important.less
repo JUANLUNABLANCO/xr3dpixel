@@ -1,0 +1,156 @@
+/* modificado: para que cualquier elemento con la clase no-padding no tenga pading dentro,
+  pero solo por denajo de estas  medidas y lo mismo con el no-margin */
+  @media(max-width: 992px){
+    h1.avr_post {
+      font-size: 2rem;
+      padding: 1rem .5rem;
+      // border: 1px solid yellow;
+    }
+    img.avr_post {
+      width: 175px !important;
+      float: right;
+    }
+  }
+
+  @media(max-width: 767px) {
+    .no-padding {
+        /* width: inherit; */
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+    .no-margin {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+    }
+    .container {
+        margin-right: 0 !important;
+        margin-left: 0 !important;
+        padding-right: 0 !important;
+        padding-left: 0 !important;
+    }
+    html {font-size: 11px !important;}
+
+    .disappear{
+      display: none;
+    }
+
+    h1.avr_post {
+      font-size: 2rem;
+      padding: 1rem .5rem;
+      // border: 1px solid red;
+    }
+    img.avr_post {
+      width: 150px !important;
+    }
+
+}
+
+
+
+.row {
+  margin-right: 0 !important;
+  margin-left: 0 !important;
+  padding-right: 0 !important;
+  padding-left: 0 !important;
+}
+
+/* modificado */
+
+@media (min-width: 768px) {
+  .container {
+      max-width: 750px;
+  }
+}
+@media (min-width: 992px) {
+  .container {
+      max-width: 970px;
+  }
+}
+@media (min-width: 1200px) {
+  /* modificado: afecta al container para anchuras superiores a 1200px */
+  .container {
+      max-width: 1170px;
+  }
+  /* .container {
+      max-width: 970px;
+  }*/
+}
+
+.left24 {
+  background-position: -24px !important;
+  padding-left: 0px !important;
+}
+
+.FULLSCREEN_BUTTON {
+  position: relative;
+  top: -25.5em;
+  width: 2em;
+  height: 2em;
+    cursor: pointer !important;
+    float: right;
+  z-index: 5000 !important;
+    // width: 36px;
+    // height: 36px;
+    background: url('..\..\images\_plantilla-velvet\video_controls.png') -155px 36px;
+    margin: 0.5em auto 0;
+}
+
+img.litle_post{
+  // width: 260px;
+  // max-height: 200px;
+  margin: 0 auto !important;
+  // border: 1px solid red;
+}
+
+
+@media (min-width : 200px) and (max-width : 480px) {
+/* Styles */
+
+  .boxed, .myboxed, .inner, .post-item, .row{
+    min-width: 200px;
+    overflow: hidden;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+  }
+
+[class*="col-"] {
+    min-width: 200px;
+    overflow: hidden;
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+    // border: 1px solid red;
+  }
+
+  .panel-body.boxed {
+    padding: 10px !important;
+  }
+
+  .avr_post {
+    padding: 10px;
+  }
+} // mediaquery
+
+  .centered {
+    text-align: center !important;
+    margin: auto !important;
+  }
+  .borderred {
+    border: 1px solid red;
+  }
+
+  .letters_black{
+    color: black !important;
+  }
+
+
+  .avr_3dtextfx *{
+    color: #fff !important;
+  }
+
+  .float-left {
+    float: left !important;
+  }
