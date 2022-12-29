@@ -1,98 +1,95 @@
 <div class="wrapper-card-visit">
 
-        <div class="wrapper-card">
-          <div class="row">
+    <div class="wrapper-card">
+        <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="hidden-xs-down">
-                  <div class="mobile-portrait">
-                    <div class="top"></div>
-                    <div class="bottom"><span>1</span></div>
-                    <div class="screen">
-                      <img src="\assets\images\content\projects\avr_02_230x460_adapted.png" >
-                      <!-- "https://i.ibb.co/vPv6tT2/bg.jpg" -->
-                      <h2><span>{{ Day }} </span><br><span>{{ Hour }} {{ ampm }}</span></h2>
-                      <ul>
-                        <li><a (click)="HrefTo('app_android')"><i class="fa fa-android" aria-hidden="true"></i></a></li>
-                        <li><a href=""><i class="fa fa-apple" aria-hidden="true"></i></a></li>
-                        <li><a href="tel:609553529" ><i class="fa fa-phone" aria-hidden="true"></i></a></li>
-                        <li><a [routerLink]="['/contact', 'app']" ><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
-                      </ul>
+                    <div class="mobile-portrait">
+                        <div class="top"></div>
+                        <div class="bottom"><span>1</span></div>
+                        <div class="screen">
+                            <img src="\assets\images\content\projects\avr_02_230x460_adapted.png">
+                            <!-- "https://i.ibb.co/vPv6tT2/bg.jpg" -->
+                            <h2><span>{{ Day }} </span><br><span>{{ Hour }} {{ ampm }}</span></h2>
+                            <ul>
+                                <li><a (click)="HrefTo('app_android')"><i class="fa fa-android" aria-hidden="true"></i></a></li>
+                                <li><a href=""><i class="fa fa-apple" aria-hidden="true"></i></a></li>
+                                <li><a href="tel:609553529"><i class="fa fa-phone" aria-hidden="true"></i></a></li>
+                                <li><a [routerLink]="['/contact', 'app']"><i class="fa fa-envelope" aria-hidden="true"></i></a></li>
+                            </ul>
+                        </div>
                     </div>
-                  </div>
 
-                  <!-- <a (click)="HrefTo('app')"> -->
+                    <!-- <a (click)="HrefTo('app')"> -->
                     <!-- descargar app -->
-                  <!-- </a> -->
+                    <!-- </a> -->
                 </div>
                 <div class="hidden-sm-up target-img">
-                    <img src="\assets\images\content\projects\avr_02_230x460_adapted.png" >
+                    <img src="\assets\images\content\projects\avr_02_230x460_adapted.png">
                 </div>
             </div>
-            <div class="col-lg-6 col-md-5 col-sm-6 col-xs-12" >
-              <div class="target-info">
-                <div class="target-text">
-                  <h1>Aplicación XR3DPixel</h1>
-                  <h2>by XR3DPixel</h2>
-                  <p>¿Quieres vivir una experiencia de Realidad Aumentada desde tu propio teléfono móvil?
-                      Descárgate la aplicación de XR3DPixel,
-                    y enfoca la <b>'image-target'</b> ,
-                      con tu cámara, o descárgatela para imprimirla.
-                  </p>
-                  <div class="clear-50"></div>
-                  <div class="wrapper-steps">
-                      <div class="steps">
-                        <ul>
-                          <li class="list active1" (click)="HrefTo('app_android')"><a >1</a></li>
-                          <li class="list active2" (click)="HrefTo('target')">2</li>
-                          <li class="list active3">3</li>
-                        </ul>
-                      </div>
-                  </div>
-                  <div class="wrapper-infosteps">
-                      <div class="steps">
-                        <ul>
-                          <li class="list active">Descarga la APP</li>
-                          <li class="list active">Imprime la imagen-target</li>
-                          <li class="list active">Disfruta la RA</li>
-                        </ul>
-                      </div>
-                  </div>
-                  <div class="clear-50"></div>
+            <div class="col-lg-6 col-md-5 col-sm-6 col-xs-12">
+                <div class="target-info">
+                    <div class="target-text">
+                        <h1>Aplicación XR3DPixel</h1>
+                        <h2>by XR3DPixel</h2>
+                        <p>¿Quieres vivir una experiencia de Realidad Aumentada desde tu propio teléfono móvil? Descárgate la aplicación de XR3DPixel, y enfoca la <b>'image-target'</b> , con tu cámara, o descárgatela para imprimirla.
+                        </p>
+                        <div class="clear-50"></div>
+                        <div class="wrapper-steps">
+                            <div class="steps">
+                                <ul>
+                                    <li class="list active1" (click)="HrefTo('app_android')"><a>1</a></li>
+                                    <li class="list active2" (click)="HrefTo('visitCard')">2</li>
+                                    <li class="list active3">3</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="wrapper-infosteps">
+                            <div class="steps">
+                                <ul>
+                                    <li class="list active">Descarga la APP</li>
+                                    <li class="list active">Imprime la imagen-target</li>
+                                    <li class="list active">Disfruta la RA</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="clear-50"></div>
+                    </div>
+
+
+                    <!-- <div class="target-price-btn"> -->
+                    <p><span class="cohete">¡¡ Te interesa !!. </span><span> ¿Quieres tener una app corporativa, de tu empresa con RA?</span></p>
+                    <div class="clear-50"></div>
+                    <!-- boton  -->
+                    <!-- </div> -->
+
                 </div>
-
-
-                <!-- <div class="target-price-btn"> -->
-                  <p><span class="cohete">¡¡ Te interesa !!. </span><span> ¿Quieres tener una app corporativa, de tu empresa con RA?</span></p>
-                  <div class="clear-50"></div>
-                  <!-- boton  -->
-                <!-- </div> -->
-
-              </div>
             </div>
             <div class="col-lg-3 col-md-3 col-sm-6 col-xs-12">
                 <div class="target-img   ">
-                  <a (click)="HrefTo('target')">
-                    <!-- <img src="/assets/images/corporativo/visit_card/card_avr3ds.jpg" alt="target image"  class=""> -->
-                    <img src="/assets/images/corporativo/visit_card/qr.png" alt="qr" class="">
-                    <div class="wrapper-steps">
-                        <div class="steps">
-                          <ul>
-                            <li class="list-petit active2">2</li>
-                          </ul>
+                    <a (click)="HrefTo('visitCard')">
+                        <!-- <img src="/assets/images/corporativo/visit_card/card_avr3ds.jpg" alt="target image"  class=""> -->
+                        <img src="/assets/images/corporativo/visit_card/qr.png" alt="qr" class="">
+                        <div class="wrapper-steps">
+                            <div class="steps">
+                                <ul>
+                                    <li class="list-petit active2">2</li>
+                                </ul>
+                            </div>
                         </div>
-                    </div>
-                  </a>
+                    </a>
                 </div>
             </div>
 
             <div class="target-price-btn">
-              <div class="clear"></div>
-              <a [routerLink]="['/contact', 'app']"><button type="button" class="centered">¡Contáctanos!</button></a>
-              <div class="clear-50"></div>
+                <div class="clear"></div>
+                <a [routerLink]="['/contact', 'app']"><button type="button" class="centered">¡Contáctanos!</button></a>
+                <div class="clear-50"></div>
             </div>
 
-          </div>
+        </div>
     </div>
 
     <div class="clear"></div>
-  </div>
+</div>

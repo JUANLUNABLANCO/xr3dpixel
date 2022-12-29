@@ -23,8 +23,8 @@ export class VisitCardComponent implements OnInit {
     // this.currentDate= new Date();
   }
   public HrefTo(site: string) {
-    if (site === 'target') {
-      this.outputPath = 'https://drive.google.com/file/d/1EgTgMmCThtrc4z84nDz0Qnw8-rDYStCW/view?usp=share_link';
+    if (site === 'visitCard') {
+      this.outputPath = 'https://drive.google.com/file/d/1JTLCwjFBruImD1SL1_E_BBsyPGZExV8S/view?usp=share_link';
     } else if (site === 'app_android') {
       this.outputPath = 'https://drive.google.com/file/d/1EgTgMmCThtrc4z84nDz0Qnw8-rDYStCW/view?usp=share_link';  // donde estará la app en android
     } else if (site === 'https://drive.google.com/file/d/1EgTgMmCThtrc4z84nDz0Qnw8-rDYStCW/view?usp=share_link') {
