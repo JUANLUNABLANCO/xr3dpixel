@@ -24,10 +24,10 @@ export class VisitCardComponent implements OnInit {
   }
   public HrefTo(site: string) {
     if (site === 'target') {
-      this.outputPath = 'https://drive.google.com/file/d/1QVRj7uz9epp_VAj01ImsDL6qbwaOt9NV/view?usp=sharing';
+      this.outputPath = 'https://drive.google.com/file/d/1EgTgMmCThtrc4z84nDz0Qnw8-rDYStCW/view?usp=share_link';
     } else if (site === 'app_android') {
-      this.outputPath = 'https://drive.google.com/file/d/16N-lhJAtE9jleDfJzlBF3J5QsKCz7DDC/view?usp=sharing';  // donde estará la app en android
-    } else if (site === 'app_apple') {
+      this.outputPath = 'https://drive.google.com/file/d/1EgTgMmCThtrc4z84nDz0Qnw8-rDYStCW/view?usp=share_link';  // donde estará la app en android
+    } else if (site === 'https://drive.google.com/file/d/1EgTgMmCThtrc4z84nDz0Qnw8-rDYStCW/view?usp=share_link') {
       this.outputPath = '';  // donde estará la app en ios
     } else {
       return;
