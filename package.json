@@ -1,6 +1,7 @@
 {
     "name": "xr3dpixel",
     "version": "0.0.0",
+    "repository": "https://github.com/JUANLUNABLANCO/xr3dpixel.git",
     "scripts": {
         "ng": "ng",
         "ng:dev": "ng serve",
