@@ -1,5 +1,5 @@
 [build]
-  command = "npm run ng:build-prod"
+  command = "npm run ng:build-prod && cp _redirects dist/"
   publish = "dist"
 
 [build.environment]
@@ -9,4 +9,3 @@
 from = "/*"
 to = "/index.html"
 status = 200
-force = true

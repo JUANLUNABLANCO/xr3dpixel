@@ -34,7 +34,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ## Subida a netlify
 
 ```bash
-npx run ng:build-prod  # construyes la app
+npx run ng:build-prod # construyes la app y copias el _redirects en la carpeta dis/
 echo "/*    /index.html   200" > "./dist/_redirects"  # creas esto para que netlify lo entienda dentro de dist
 netlify deploy --dir=dist --prod  ## ejecutas la subida 
 ```

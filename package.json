@@ -11,7 +11,7 @@
     "ng": "ng",
     "ng:dev": "ng serve",
     "ng-build": "ng build",
-    "ng:build-prod": "ng build --prod",
+    "ng:build-prod": "ng build --prod && cp _redirects dist/",
     "ng-watch": "ng build --watch --configuration development",
     "ng-test": "ng test",
     "node:dev": "npx nodemon -L src/index.js",
