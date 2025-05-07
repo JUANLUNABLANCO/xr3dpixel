@@ -29,3 +29,16 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
+
+
+## Subida a netlify
+
+```bash
+npx run ng:build-prod  # construyes la app
+echo "/*    /index.html   200" > "./dist/_redirects"  # creas esto para que netlify lo entienda dentro de dist
+netlify deploy --dir=dist --prod  ## ejecutas la subida 
+```
+
+Lo de CI/CD con git no funcionó así que esa es otra alternativa
+
+

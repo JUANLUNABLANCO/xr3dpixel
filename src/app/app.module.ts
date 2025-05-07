@@ -1,17 +1,17 @@
 // ############################# modulos de angular
-import { NgModule  } from '@angular/core';  // LOCALE_ID
-import { BrowserModule } from '@angular/platform-browser';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NgModule } from "@angular/core"; // LOCALE_ID
+import { BrowserModule } from "@angular/platform-browser";
+import { BrowserAnimationsModule } from "@angular/platform-browser/animations";
 // import { CommonModule } from '@angular/common';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule } from "@angular/common/http";
 
 // ##### MY MODULES
-import { PagesModule } from './structure/pages/pages.module';
+import { PagesModule } from "./structure/pages/pages.module";
 // RUTAS
-import { APP_ROUTES } from './app.routes';
+import { APP_ROUTES } from "./app.routes";
 // ############################# modulos
 // ############################# Declarations: components, pipes
-import { AppComponent } from './app.component';
+import { AppComponent } from "./app.component";
 
 // ######################### dates
 // import localeEs from '@angular/common/locales/es';
@@ -23,20 +23,18 @@ import { AppComponent } from './app.component';
 // ############################# Declarations: components, pipes
 
 @NgModule({
-  declarations: [
-    AppComponent
-  ],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     // CommonModule,
-    HttpClientModule,
+    // HttpClientModule,
     APP_ROUTES,
     PagesModule,
 
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
   ],
-  providers: [  ],
+  providers: [],
   // providers: [{ provide: LOCALE_ID, useValue: 'es' }],
-  bootstrap: [ AppComponent ]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

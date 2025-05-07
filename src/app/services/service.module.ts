@@ -1,19 +1,16 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { HttpModule } from '@angular/http';
+import { NgModule } from "@angular/core";
+import { CommonModule } from "@angular/common";
+// import { HttpModule } from '@angular/http';
 
 // propios
-import { ContactService } from './service.index';
-
+import { ContactService } from "./service.index";
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpModule
+    // HttpModule
   ],
-  providers: [
-    ContactService
-  ],
-  declarations: []
+  providers: [ContactService],
+  declarations: [],
 })
-export class ServiceModule { }
+export class ServiceModule {}
