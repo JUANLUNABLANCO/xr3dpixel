@@ -5,6 +5,6 @@
 
 export const environment = {
   production: false,
-  baseUrl: 'http://localhost:3000',
-  whois: 'development'
+  // baseUrl: "http://localhost:3000",
+  whois: "development",
 };
