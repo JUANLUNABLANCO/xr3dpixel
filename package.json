@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "engine": {
     "node": "16.17.0",
-    "npm": "8.5.5",
+    "npm": "9.7.2",
     "ng": "8.2.14"
   },
   "repository": "https://github.com/JUANLUNABLANCO/xr3dpixel.git",

@@ -1,0 +1,6 @@
+[build]
+  command = "npm run ng:build-prod"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "16.17.0"
